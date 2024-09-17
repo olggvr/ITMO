@@ -1,0 +1,23 @@
+{
+  "collection": [
+    {
+      "id": 1,
+      "name": "3",
+      "coordinates": {
+        "x": 533.0,
+        "y": 35.0
+      },
+      "creationDate": "2024-03-26T10:41:16.5148235",
+      "health": 35,
+      "achievements": "3",
+      "height": 4,
+      "weaponType": "GRAV_GUN",
+      "chapter": {
+        "name": "3",
+        "marinesCount": 4
+      }
+    }
+  ],
+  "lastInitTime": "2024-03-26T10:41:13.6580336",
+  "lastSaveTime": "2024-03-26T10:41:22.5102934"
+}

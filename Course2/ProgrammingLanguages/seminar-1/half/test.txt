@@ -1,0 +1,34 @@
+a
+bb
+ccc
+0x1F
+hello
+123abc
+0xABcd
+word
+1
+2
+three
+4x5
+ab
+abcd
+0x123456
+hello world
+another line
+0xdeadbeef
+5
+a
+b
+c
+d
+e
+1a2b3c
+short
+longer
+word123
+0x1
+0xFFFF
+hexadecimal
+privet
+art132
+ewew

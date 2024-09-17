@@ -1,0 +1,14 @@
+show
+help
+add
+Robert
+10
+11
+100
+Крутизна
+187
+GRAV_GUN
+1
+190
+save
+exit

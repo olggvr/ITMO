@@ -1,0 +1,74 @@
+{
+  "collection": [
+    {
+      "id": 1,
+      "name": "24727",
+      "coordinates": {
+        "x": 46.0,
+        "y": 864.0
+      },
+      "creationDate": "2024-05-03T21:03:47.4499072",
+      "health": 8,
+      "achievements": "48",
+      "height": 9,
+      "weaponType": "HEAVY_FLAMER",
+      "chapter": {
+        "name": "5",
+        "marinesCount": 6
+      }
+    },
+    {
+      "id": 2,
+      "name": "3",
+      "coordinates": {
+        "x": 5.0,
+        "y": 37.0
+      },
+      "creationDate": "2024-05-03T21:03:23.5190176",
+      "health": 357,
+      "achievements": "537",
+      "height": 9,
+      "weaponType": "GRAV_GUN",
+      "chapter": {
+        "name": "5",
+        "marinesCount": 7
+      }
+    },
+    {
+      "id": 3,
+      "name": "53",
+      "coordinates": {
+        "x": 7835.0,
+        "y": 7853.0
+      },
+      "creationDate": "2024-04-30T11:00:27.1623637",
+      "health": 8,
+      "achievements": "5",
+      "height": 9,
+      "weaponType": "GRAV_GUN",
+      "chapter": {
+        "name": "8",
+        "marinesCount": 8
+      }
+    },
+    {
+      "id": 4,
+      "name": "53",
+      "coordinates": {
+        "x": 785.0,
+        "y": 38.0
+      },
+      "creationDate": "2024-05-03T20:32:17.182851",
+      "health": 38,
+      "achievements": "58",
+      "height": 9,
+      "weaponType": "GRAV_GUN",
+      "chapter": {
+        "name": "5",
+        "marinesCount": 7
+      }
+    }
+  ],
+  "lastInitTime": "2024-07-04T17:22:23.5312898",
+  "lastSaveTime": "2024-07-04T17:22:23.8998871"
+}

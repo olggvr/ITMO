@@ -1,0 +1,29 @@
+add
+Robert
+53
+64
+50
+none
+353
+grav_gun
+moon
+4
+add_if_min
+Alla
+53
+64
+10
+da
+353
+HEAVY_BOLTGUN
+moon
+4
+help
+show
+execute_script ..\script.txt
+save
+add
+average_of_height
+remove_head
+update 1
+save

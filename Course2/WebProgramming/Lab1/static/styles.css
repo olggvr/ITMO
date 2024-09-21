@@ -1,0 +1,127 @@
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #424242;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #f0f0f0;;
+}
+
+table.header{
+    background-color: #353434;
+    border-radius: 15px;
+    margin: 0% 25%;
+    font-size: 1.5rem;
+    font-family: cursive;
+}
+
+.info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1%;
+    margin: 0% 15%;
+}
+
+:root{
+    --line-color: white;
+}
+
+/* graph params */
+svg {
+    border-radius: 2%;
+    padding: 10px;
+    display: block;
+    margin: auto;
+    border: 1px solid #ddd;
+    background-color: #424242;
+}
+svg line{
+    stroke: var(--line-color);
+}
+svg text{
+    font-family: cursive;
+    fill: white;
+}
+/* tables styles */
+table.params.form {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+}
+
+/* table headers */
+th {
+    background-color: #424242;
+    font-weight: bold;
+    padding: 10px;
+    text-align: left;
+}
+
+/* table data cells */
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+/* form styles */
+form {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #424242;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* variants margin */
+label {
+    margin-right: 10px;
+}
+
+input[type="checkbox"], input[type="radio"] {
+    margin-right: 5px;
+}
+
+input[type="text"] {
+    width: 60px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* submit button */
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* table params */
+table.params {
+    width: 420px;
+    margin: 20px auto;
+    text-align: center;
+}

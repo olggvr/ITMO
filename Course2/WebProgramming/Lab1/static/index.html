@@ -7,6 +7,8 @@
     <script defer src="index.js"></script>
 </head>
 <body>
+
+    <!-- Header -->
     <table class="header">
         <tr class="info">
             <td>Name: <br><b>Gavrilin Oleg</b></td>
@@ -15,42 +17,52 @@
         </tr>
     </table>
 
+    <!-- Coordinate system -->
     <table class="params">
-        <td>
-            <svg width="400" height="400" class="graph">
+        <tr>
+            <td>
+                <svg width="400" height="400" class="graph">
 
-                <line x1="200" y1="0" x2="200" y2="400" stroke-width="2" />
-                <line x1="0" y1="200" x2="400" y2="200" stroke-width="2" />
+                    <line x1="200" y1="0" x2="200" y2="400" stroke-width="2" />
+                    <line x1="0" y1="200" x2="400" y2="200" stroke-width="2" />
 
-                <!-- Y -->
-                <polygon points="200,0 195,10 205,10" fill="white" />
-                <text x="210" y="10" font-family="Arial" font-size="14">Y</text>
+                    <!-- Y -->
+                    <polygon points="200,0 195,10 205,10" fill="white" />
+                    <text x="210" y="10" font-family="Arial" font-size="14">Y</text>
 
-                <!-- X -->
-                <polygon points="400,200 390,195 390,205" fill="white" />
-                <text x="390" y="220" font-family="Arial" font-size="14">X</text>
+                    <!-- X -->
+                    <polygon points="400,200 390,195 390,205" fill="white" />
+                    <text x="390" y="220" font-family="Arial" font-size="14">X</text>
 
-                <line x1="195" y1="50" x2="205" y2="50" stroke-width="2" />
-                <text x="215" y="55" font-family="Arial" font-size="14">R</text>
-                <line x1="195" y1="125" x2="205" y2="125" stroke-width="2" />
-                <text x="215" y="130" font-family="Arial" font-size="14">R/2</text>
-                <line x1="195" y1="275" x2="205" y2="275" stroke-width="2" />
-                <text x="215" y="280" font-family="Arial" font-size="14">-R/2</text>
-                <line x1="195" y1="350" x2="205" y2="350" stroke-width="2" />
-                <text x="215" y="355" font-family="Arial" font-size="14">-R</text>
+                    <line x1="195" y1="50" x2="205" y2="50" stroke-width="2" />
+                    <text x="215" y="55" font-family="Arial" font-size="14">R</text>
+                    <line x1="195" y1="125" x2="205" y2="125" stroke-width="2" />
+                    <text x="215" y="130" font-family="Arial" font-size="14">R/2</text>
+                    <line x1="195" y1="275" x2="205" y2="275" stroke-width="2" />
+                    <text x="215" y="280" font-family="Arial" font-size="14">-R/2</text>
+                    <line x1="195" y1="350" x2="205" y2="350" stroke-width="2" />
+                    <text x="215" y="355" font-family="Arial" font-size="14">-R</text>
 
-                <line x1="275" y1="195" x2="275" y2="205" stroke-width="2" />
-                <text x="270" y="220" font-family="Arial" font-size="14">R/2</text>
-                <line x1="350" y1="195" x2="350" y2="205" stroke-width="2" />
-                <text x="350" y="220" font-family="Arial" font-size="14">R</text>
-                <line x1="125" y1="195" x2="125" y2="205" stroke-width="2" />
-                <text x="120" y="220" font-family="Arial" font-size="14">-R/2</text>
-                <line x1="50" y1="195" x2="50" y2="205" stroke-width="2" />
-                <text x="50" y="220" font-family="Arial" font-size="14">-R</text>
-            </svg>
-        </td>
+                    <line x1="275" y1="195" x2="275" y2="205" stroke-width="2" />
+                    <text x="270" y="220" font-family="Arial" font-size="14">R/2</text>
+                    <line x1="350" y1="195" x2="350" y2="205" stroke-width="2" />
+                    <text x="350" y="220" font-family="Arial" font-size="14">R</text>
+                    <line x1="125" y1="195" x2="125" y2="205" stroke-width="2" />
+                    <text x="120" y="220" font-family="Arial" font-size="14">-R/2</text>
+                    <line x1="50" y1="195" x2="50" y2="205" stroke-width="2" />
+                    <text x="50" y="220" font-family="Arial" font-size="14">-R</text>
+
+                    <!-- paint fields -->
+                    <polygon points="200,200 275,200 275,50 200,50" fill="blue" opacity="0.7" stroke="white"/>
+                    <polygon points="200,200 275,200 200,350" fill="blue" opacity="0.7" stroke="white"/>
+                    <path d="M 200,200 L 200,350 A 150,150 0 0 1 50,200 Z" fill="blue" opacity="0.7" stroke="white"/>
+                </svg>
+            </td>
+        </tr>
     </table>
-    <form action="/" method="POST">
+
+    <!-- form data -->
+    <form action="/" method="POST" enctype="application/x-www-form-urlencoded">
         <table class="form">
             <tr class = "inpX">
                 <th>Координата X</th>
@@ -89,5 +101,19 @@
             </tr>
         </table>
     </form>
+
+    <section class="results-section">
+        <table id="result-table">
+            <tr>
+                <th>x</th>
+                <th>y</th>
+                <th>r</th>
+                <th>time</th>
+                <th>ex. time</th>
+                <th>res</th>
+            </tr>
+        </table>
+        <canvas id="graph" width="250" height="250"></canvas>
+    </section>
 </body>
 </html>

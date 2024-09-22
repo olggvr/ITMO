@@ -125,3 +125,13 @@ table.params {
     margin: 20px auto;
     text-align: center;
 }
+
+/* results table */
+.results-section {
+    position: fixed;
+    top: 20%;
+    right: 5%;
+    border: 1px solid white;
+    border-radius: 8px;
+    padding: 10px;
+}

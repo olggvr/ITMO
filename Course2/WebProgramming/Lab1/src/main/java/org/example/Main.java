@@ -2,6 +2,7 @@ package org.example;
 
 import com.fastcgi.FCGIInterface;
 
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -41,20 +42,30 @@ public class Main {
         var fcgi = new FCGIInterface();
         while (fcgi.FCGIaccept() >= 0) {
             try {
-                var queryParams = System.getProperties().getProperty("QUERY_STRING");
-                var params = new ParamsGET(queryParams);
 
+                // get request body
+                InputStream inData = new BufferedInputStream(new FileInputStream(FileDescriptor.in), 128);
+                StringBuilder requestBody = new StringBuilder();
+                int c;
+                while ((c = inData.read()) != -1){
+                    requestBody.append((char) c);
+                }
+                String body = requestBody.toString();
+                System.out.println("Recieved body: " + body);
+
+                // extract data
+                Params params = new Params(body);
                 var startTime = Instant.now();
                 var result = validate(params.getX(), params.getY(), params.getR());
                 var endTime = Instant.now();
 
                 var json = String.format(RESULT_JSON, ChronoUnit.NANOS.between(startTime, endTime), LocalDateTime.now(), result);
-                var response = String.format(HTTP_RESPONSE, json.getBytes(StandardCharsets.UTF_8).length + 2, json);
-                System.out.println(response);
-            } catch (ValidateException e) {
-                var json = String.format(ERROR_JSON, LocalDateTime.now(), e.getMessage());
-                var response = String.format(HTTP_ERROR, json.getBytes(StandardCharsets.UTF_8).length + 2, json);
-                System.out.println(response);
+                var response = String.format(HTTP_RESPONSE, json);
+
+            } catch (IOException e) {
+
+            }catch (ValidateException e){
+
             }
         }
     }

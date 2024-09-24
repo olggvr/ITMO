@@ -13,6 +13,7 @@ dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     implementation files('./libs/fastcgi-lib.jar')
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 }
 
 jar {
@@ -25,6 +26,9 @@ jar {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
     archiveFileName = 'lab1.jar'
+    jar {
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    }
 }
 
 test {

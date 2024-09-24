@@ -62,7 +62,8 @@
     </table>
 
     <!-- form data -->
-    <form action="/" method="POST" enctype="application/x-www-form-urlencoded">
+    <div id="error" hidden></div>
+    <form action="/" method="POST" id="data-form">
         <table class="form">
             <tr class = "inpX">
                 <th>Координата X</th>
@@ -108,12 +109,11 @@
                 <th>x</th>
                 <th>y</th>
                 <th>r</th>
-                <th>time</th>
                 <th>ex. time</th>
+                <th>time</th>
                 <th>res</th>
             </tr>
         </table>
-        <canvas id="graph" width="250" height="250"></canvas>
     </section>
 </body>
 </html>

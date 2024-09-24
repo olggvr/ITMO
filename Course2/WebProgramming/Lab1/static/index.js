@@ -1,57 +1,161 @@
+class InvalidValueException extends Error {
+    constructor(message) {
+        super(message);
+        this.name = "InvalidValueException";
+    }
+}
 
-// listen form
-document.querySelector('form').addEventListener('submit', async function (event){
+function validateFormInput(values) {
 
-    // validate input values
-    //
-
-    let errors = [];
-
-    // x validate
-    const checkboxesX = document.querySelectorAll('input[name="x"]:checked')
-    if (checkboxesX.length !== 1) errors.push("ERROR: Выберите ровно одно значнеие X");
-
-    // y validate
-    const inputY = document.querySelector('input[name="y"]');
-    const yValue = parseFloat(inputY.value);
-
-    if (isNaN(yValue) || yValue < -3 || yValue > 5) {
-        errors.push('ERROR: Введите корректное значение Y в диапазоне от -3 до 5.');
+    if (values.x === null) {
+        throw new InvalidValueException("Choose X");
     }
 
-    // errors output
-    if (errors.length > 0) {
-        event.preventDefault();
-        alert(errors.join('\n'));
+    if (isNaN(values.y)) {
+        throw new InvalidValueException("Wrong Y");
     }
 
-    // send data
-    //
+    const y = parseInt(values.y);
+    if (y < -3 || y > 5) {
+        throw new InvalidValueException("Wrong Y")
+    }
 
-    event.preventDefault();
-    const formData = new FormData(this);
+    if (isNaN(values.r)) {
+        throw new InvalidValueException("Wrong R value")
+    }
+}
 
-    try{
-        const response = await fetch('/fcgi-bin/lab1.jar', {
-            method: 'POST',
-            body: formData
-        })
+
+/** @type HTMLTableElement */
+const table = document.getElementById("result-table");
+
+/** @type HTMLDivElement */
+const errorDiv = document.getElementById("error");
+
+async function onSubmit(ev) {
+    ev.preventDefault();
+
+    const formData = new FormData(document.getElementById("data-form"));
+    const values = {
+        x: formData.get('x'),
+        y: formData.get('y'),
+        r: formData.get('r')
+    };
+
+    try {
+        validateFormInput(values);
+        errorDiv.hidden = true;
+    } catch (e) {
+        errorDiv.hidden = false;
+        errorDiv.textContent = e.message;
+        return
+    }
+
+
+    const response = await fetch('/fcgi-bin/lab1.jar', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json; charset=UTF-8'
+        },
+        body: JSON.stringify(values)
+    });
+
+
+    const newRow = table.insertRow(-1);
+    const rowX = newRow.insertCell(0);
+    const rowY = newRow.insertCell(1);
+    const rowR = newRow.insertCell(2);
+    const rowTime = newRow.insertCell(3);
+    const rowNow = newRow.insertCell(4);
+    const rowResult = newRow.insertCell(5);
+
+    const y = parseFloat(values.y).toFixed(2);
+
+    rowX.textContent = values.x;
+    rowY.textContent = y;
+    rowR.textContent = values.r;
+
+
+    if (response.ok) {
 
         const result = await response.json();
+        rowTime.textContent = result.time;
+        rowNow.textContent = result.now;
+        const res =rowResult.textContent = result.result.toString();
+        if (res==="true"){
+            rowResult.style.color="green"
+        }else{
+            rowResult.style.color="orange"
+        }
 
-        const currentTime = new Date().toLocaleTimeString();
-        const execTime = "";
 
-        const table = document.getElementById('result-table');
-        const newRow = table.insertRow(); // Создаем новую строку
+    } else {
 
-        newRow.insertCell(0).textContent = result.x;
-        newRow.insertCell(1).textContent = result.y;
-        newRow.insertCell(2).textContent = result.r;
-        newRow.insertCell(3).textContent = currentTime;
-        newRow.insertCell(4).textContent = executionTime;
-        newRow.insertCell(5).textContent = result.res ? "True" : "False";
-    }catch (error) {
-        console.error('Error: ', error);
+        const result = await response.json();
+        rowResult.style.color = "red";
+        rowResult.textContent = "error";
+        rowNow.textContent = result.now;
+        console.error(result);
     }
-})
+
+
+    saveTableData();
+
+}
+
+
+const dataForm = document.getElementById("data-form");
+dataForm.addEventListener('submit', onSubmit);
+document.addEventListener('DOMContentLoaded', dataLoader);
+
+
+function dataLoader() {
+
+    const tableData = JSON.parse(sessionStorage.getItem('tableData')) || [];
+
+    tableData.forEach(data => {
+        const newRow = table.insertRow(-1);
+        const rowX = newRow.insertCell(0);
+        const rowY = newRow.insertCell(1);
+        const rowR = newRow.insertCell(2);
+        const rowTime = newRow.insertCell(3);
+        const rowNow = newRow.insertCell(4);
+        const rowResult = newRow.insertCell(5);
+
+        rowX.textContent = data.x;
+        rowY.textContent = data.y;
+        rowR.textContent = data.r;
+        rowTime.textContent = data.time;
+        rowNow.textContent = data.now;
+        rowResult.textContent = data.result;
+
+        if (data.result === "true"){
+            rowResult.style.color="green";
+        }else if ( data.result === "false"){
+            rowResult.style.color="orange"
+        } else{
+            rowResult.style.color="red"
+        }
+    });
+
+}
+
+
+function saveTableData() {
+    const rows = Array.from(table.rows).slice(1);
+    const tableData = rows.map(row => {
+        return {
+            x: row.cells[0].textContent,
+            y: row.cells[1].textContent,
+            r: row.cells[2].textContent,
+            time: row.cells[3].textContent,
+            now: row.cells[4].textContent,
+            result: row.cells[5].textContent,
+        };
+
+
+    });
+
+    sessionStorage.setItem('tableData', JSON.stringify(tableData));
+
+}

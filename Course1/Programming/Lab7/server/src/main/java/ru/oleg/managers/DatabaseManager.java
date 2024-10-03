@@ -36,7 +36,6 @@ public class DatabaseManager {
     public static final String DATABASE_CONFIG_PATH = Objects.requireNonNull(App.class.getClassLoader().getResource("config_to_server.cfg")).getPath();
     public static final String DATABASE_CONFIG_PATH_HELIOS = "config_to_server.cfg";
 
-//  public static final String DATABASE_CONFIG_PATH = "C:\\Users\\X240\\Desktop\\ИТМО\\Прога_java\\prog_lab7-master\\server\\config_to_server.cfg";
     public DatabaseManager() {
         try {
             md = MessageDigest.getInstance(HASHING_ALGORITHM);
@@ -70,26 +69,6 @@ public class DatabaseManager {
             connection.close();
         }
     }
-
-//    public void connect() {
-//        Properties info = null;
-//        try {
-//            info = new Properties();
-//            info.load(new FileInputStream(DATABASE_CONFIG_PATH));
-//            connection = DriverManager.getConnection(DATABASE_URL, info);
-//            databaseLogger.info("Успешно подключен к базе данных");
-//        } catch (SQLException | IOException e) {
-//            try {
-//
-//                connection = DriverManager.getConnection(DATABASE_URL_HELIOS, info);
-//            } catch (SQLException ex) {
-//                databaseLogger.fatal("Невозможно подключиться к базе данных");
-//                databaseLogger.debug(e);
-//                databaseLogger.debug(ex);с
-//                System.exit(1);
-//            }
-//        }
-//    }
 
     public void createMainBase() throws SQLException {
         try (Connection connection = getConnection();

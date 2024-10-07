@@ -55,7 +55,7 @@ class Parameters {
         }
         try {
             float yy = Float.parseFloat(y);
-            if (yy < -3 || yy > 5) {
+            if (yy < -3 || yy > 5 || isNaN(yy)) {
                 throw new ValidationException(400, "Wrong Y");
             }
             return yy;
@@ -70,13 +70,17 @@ class Parameters {
         }
         try {
             float rr = Float.parseFloat(r);
-            if (rr < 1 || rr > 3) {
+            if (rr < 1 || rr > 3 || isNaN(rr)) {
                 throw new ValidationException(400, "Wrong R");
             }
             return rr;
         } catch (NumberFormatException e) {
             throw new ValidationException(400, "R is not a number");
         }
+    }
+
+    private boolean isNaN(Number number){
+        return Float.isNaN(number.floatValue());
     }
 
     // getters

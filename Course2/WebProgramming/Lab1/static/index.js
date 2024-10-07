@@ -36,6 +36,7 @@ async function onSubmit(ev) {
     ev.preventDefault();
 
     const formData = new FormData(document.getElementById("data-form"));
+
     const values = {
         x: formData.get('x'),
         y: formData.get('y'),
@@ -60,25 +61,20 @@ async function onSubmit(ev) {
         body: JSON.stringify(values)
     });
 
-
-    const newRow = table.insertRow(-1);
-    const rowX = newRow.insertCell(0);
-    const rowY = newRow.insertCell(1);
-    const rowR = newRow.insertCell(2);
-    const rowTime = newRow.insertCell(3);
-    const rowNow = newRow.insertCell(4);
-    const rowResult = newRow.insertCell(5);
-
-    const y = parseFloat(values.y).toFixed(2);
-
-    rowX.textContent = values.x;
-    rowY.textContent = y;
-    rowR.textContent = values.r;
-
-
     if (response.ok) {
 
+        const newRow = table.insertRow(-1);
+        const rowX = newRow.insertCell(0);
+        const rowY = newRow.insertCell(1);
+        const rowR = newRow.insertCell(2);
+        const rowTime = newRow.insertCell(3);
+        const rowNow = newRow.insertCell(4);
+        const rowResult = newRow.insertCell(5);
+
         const result = await response.json();
+        rowX.textContent = result.x;
+        rowY.textContent = result.y;
+        rowR.textContent = result.z;
         rowTime.textContent = result.time;
         rowNow.textContent = result.now;
         const res =rowResult.textContent = result.result.toString();
@@ -90,7 +86,6 @@ async function onSubmit(ev) {
 
 
     } else {
-
         const result = await response.json();
         rowResult.style.color = "red";
         rowResult.textContent = "error";

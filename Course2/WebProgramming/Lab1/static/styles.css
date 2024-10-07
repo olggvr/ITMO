@@ -119,12 +119,14 @@ button:hover {
     background-color: #0056b3;
 }
 
-/* table params */
+/* table params
 table.params {
     width: 420px;
     margin: 20px 10px;
     text-align: center;
 }
+ */
+
 
 /* results table */
 .results-section {

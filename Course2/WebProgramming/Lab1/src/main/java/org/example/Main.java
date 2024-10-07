@@ -32,6 +32,9 @@ public class Main {
     """;
     private static final String RESULT_JSON = """
     {
+        "x": "%d",
+        "y": "%f",
+        "z": "%f",
         "time": "%s ns",
         "now": "%s",
         "result": %b
@@ -84,7 +87,7 @@ public class Main {
                 String formattedNow = LocalDateTime.now().format(formatter); // Форматируем текущее время
 
                 // make success json response
-                var json = String.format(RESULT_JSON, timeTakenNanos, formattedNow, result);
+                var json = String.format(RESULT_JSON, params.getX(), params.getY(), params.getR(), timeTakenNanos, formattedNow, result);
                 var response = String.format(HTTP_RESPONSE, json.getBytes(StandardCharsets.UTF_8).length, json);
                 System.out.println(response);
             } catch (ValidationException | IOException e) {
@@ -98,7 +101,7 @@ public class Main {
         }
     }
 
-    // calculate values function 
+    // calculate values function
     private static boolean calculate (float x, float y, float r){
         if (x < 0 && y > 0) return false;
         if (x > 0 && y > 0)

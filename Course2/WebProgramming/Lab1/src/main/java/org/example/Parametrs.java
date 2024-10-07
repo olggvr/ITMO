@@ -8,19 +8,22 @@ class Parameters {
     private final float y;
     private final float r;
 
+    // constructor
     public Parameters(String jsonString) throws ValidationException {
         if (jsonString == null || jsonString.isEmpty()) {
             throw new ValidationException(400, "Missing request body");
         }
 
         try {
+
             // JSON string parsing
             JSONParser parser = new JSONParser();
             JSONObject jsonObject = (JSONObject) parser.parse(jsonString);  // JSON -> Object
             if (!jsonObject.containsKey("x") || !jsonObject.containsKey("y") || !jsonObject.containsKey("r")) {
                 throw new ValidationException(400, "Missing one param or more, json invalid");
             }
-            // Get values and validate
+
+            // get values and validate
             this.x = validateX((String) jsonObject.get("x").toString());
             this.y = validateY((String) jsonObject.get("y").toString());
             this.r = validateR((String)jsonObject.get("r").toString());
@@ -30,7 +33,7 @@ class Parameters {
         }
     }
 
-    // Validate
+    // validation
     private int validateX(String x) throws ValidationException {
         if (x == null || x.isEmpty()) {
             throw new ValidationException(422, "X is empty");

@@ -15,6 +15,7 @@ import static org.example.ValidationException.statusCode;
 
 public class Main {
 
+    // http responses
     private static final String HTTP_RESPONSE = """
     Status: 200 OK
     Content-Type: application/json;charset=utf-8
@@ -45,10 +46,14 @@ public class Main {
 
     public static void main(String[] args) {
         var fcgi = new FCGIInterface();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss"); // Time format
+
+        // time format
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
         while (fcgi.FCGIaccept() >= 0) {
             try {
+
+                // http method verification
                 String requestMethod = System.getProperties().getProperty("REQUEST_METHOD");
                 if (!"POST".equals(requestMethod)) {
                     throw new ValidationException(400, "Only POST requests are supported");
@@ -60,6 +65,7 @@ public class Main {
                     throw new ValidationException(400, "Content-Length header missing");
                 }
 
+                // read body to buffer
                 int contentLength = Integer.parseInt(contentLengthHeader);
                 BufferedReader reader = new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
                 char[] bodyChars = new char[contentLength];
@@ -68,19 +74,22 @@ public class Main {
                 String requestBody = new String(bodyChars);
                 var params = new Parameters(requestBody);
 
+                // check values and time
                 var startTime = Instant.now();
                 var result = calculate(params.getX(), params.getY(), params.getR()); // расчет
                 var endTime = Instant.now();
 
-                // Time and formating
+                // formatting time
                 long timeTakenNanos = ChronoUnit.NANOS.between(startTime, endTime);
                 String formattedNow = LocalDateTime.now().format(formatter); // Форматируем текущее время
 
-                // JSON response
+                // make success json response
                 var json = String.format(RESULT_JSON, timeTakenNanos, formattedNow, result);
                 var response = String.format(HTTP_RESPONSE, json.getBytes(StandardCharsets.UTF_8).length, json);
                 System.out.println(response);
             } catch (ValidationException | IOException e) {
+
+                // make error response
                 var formattedNow = LocalDateTime.now().format(formatter);
                 var json = String.format(ERROR_JSON, formattedNow, e.getMessage());
                 var response = String.format(HTTP_ERROR, statusCode, json.getBytes(StandardCharsets.UTF_8).length, json);
@@ -89,6 +98,7 @@ public class Main {
         }
     }
 
+    // calculate values function 
     private static boolean calculate (float x, float y, float r){
         if (x < 0 && y > 0) return false;
         if (x > 0 && y > 0)

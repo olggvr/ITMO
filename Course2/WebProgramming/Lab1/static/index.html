@@ -63,45 +63,43 @@
 
     <!-- form data -->
     <div id="error" hidden></div>
-    <form action="/" method="POST" id="data-form">
-        <table class="form">
-            <tr class = "inpX">
-                <th>Координата X</th>
-                <td>
-                    <label><input type="checkbox" name="x" value="-4">-4</label>
-                    <label><input type="checkbox" name="x" value="-3">-3</label>
-                    <label><input type="checkbox" name="x" value="-2">-2</label>
-                    <label><input type="checkbox" name="x" value="-1">-1</label>
-                    <label><input type="checkbox" name="x" value="0">0</label>
-                    <label><input type="checkbox" name="x" value="1">1</label>
-                    <label><input type="checkbox" name="x" value="2">2</label>
-                    <label><input type="checkbox" name="x" value="3">3</label>
-                    <label><input type="checkbox" name="x" value="4">4</label>
-                </td>
-            </tr>
-            <tr class="inpY">
-                <th>Координата Y</th>
-                <td>
-                    <input type="text" name="y" placeholder="-3..5" maxlength="2" required>
-                </td>
-            </tr>
-            <tr class="inpR">
-                <th>Радиус R</th>
-                <td>
-                    <label><input type="radio" name="r" value="1" required>1</label>
-                    <label><input type="radio" name="r" value="1.5">1.5</label>
-                    <label><input type="radio" name="r" value="2">2</label>
-                    <label><input type="radio" name="r" value="2.5">2.5</label>
-                    <label><input type="radio" name="r" value="3">3</label>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" style="text-align: center;">
-                    <button type="submit">Отправить</button>
-                </td>
-            </tr>
-        </table>
-    </form>
+    <table class="form">
+        <tr class = "inpX">
+            <th>Координата X</th>
+            <td>
+                <label><input type="checkbox" name="x" value="-4">-4</label>
+                <label><input type="checkbox" name="x" value="-3">-3</label>
+                <label><input type="checkbox" name="x" value="-2">-2</label>
+                <label><input type="checkbox" name="x" value="-1">-1</label>
+                <label><input type="checkbox" name="x" value="0">0</label>
+                <label><input type="checkbox" name="x" value="1">1</label>
+                <label><input type="checkbox" name="x" value="2">2</label>
+                <label><input type="checkbox" name="x" value="3">3</label>
+                <label><input type="checkbox" name="x" value="4">4</label>
+            </td>
+        </tr>
+        <tr class="inpY">
+            <th>Координата Y</th>
+            <td>
+                <input type="text" name="y" placeholder="-3..5" maxlength="2" required>
+            </td>
+        </tr>
+        <tr class="inpR">
+            <th>Радиус R</th>
+            <td>
+                <label><input type="radio" name="r" value="1" required>1</label>
+                <label><input type="radio" name="r" value="1.5">1.5</label>
+                <label><input type="radio" name="r" value="2">2</label>
+                <label><input type="radio" name="r" value="2.5">2.5</label>
+                <label><input type="radio" name="r" value="3">3</label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center;">
+                <button id="sub_button">Отправить</button>
+            </td>
+        </tr>
+    </table>
 
     <section class="results-section">
         <table id="result-table">

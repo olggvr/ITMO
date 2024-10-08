@@ -15,7 +15,6 @@ import static org.example.ValidationException.statusCode;
 
 public class Main {
 
-    // http responses
     private static final String HTTP_RESPONSE = """
     Status: 200 OK
     Content-Type: application/json;charset=utf-8
@@ -64,27 +63,16 @@ public class Main {
 
                 // get Content-Length
                 String contentLengthHeader = System.getProperties().getProperty("CONTENT_LENGTH");
-                if (contentLengthHeader == null) {
-                    throw new ValidationException(400, "Content-Length header missing");
-                }
-
-                // read body to buffer
-                int contentLength = Integer.parseInt(contentLengthHeader);
-                BufferedReader reader = new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
-                char[] bodyChars = new char[contentLength];
-                reader.read(bodyChars, 0, contentLength);
-
-                String requestBody = new String(bodyChars);
-                var params = new Parameters(requestBody);
+                var params = getParameters(contentLengthHeader);
 
                 // check values and time
                 var startTime = Instant.now();
-                var result = calculate(params.getX(), params.getY(), params.getR()); // расчет
+                var result = calculate(params.getX(), params.getY(), params.getR());
                 var endTime = Instant.now();
 
                 // formatting time
                 long timeTakenNanos = ChronoUnit.NANOS.between(startTime, endTime);
-                String formattedNow = LocalDateTime.now().format(formatter); // Форматируем текущее время
+                String formattedNow = LocalDateTime.now().format(formatter);
 
                 // make success json response
                 var json = String.format(RESULT_JSON, params.getX(), params.getY(), params.getR(), timeTakenNanos, formattedNow, result);
@@ -99,6 +87,21 @@ public class Main {
                 System.out.println(response);
             }
         }
+    }
+
+    private static Params getParameters(String contentLengthHeader) throws ValidationException, IOException {
+        if (contentLengthHeader == null) {
+            throw new ValidationException(400, "Content-Length header missing");
+        }
+
+        // read body to buffer
+        int contentLength = Integer.parseInt(contentLengthHeader);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
+        char[] bodyChars = new char[contentLength];
+        reader.read(bodyChars, 0, contentLength);
+
+        String requestBody = new String(bodyChars);
+        return new Params(requestBody);
     }
 
     // calculate values function

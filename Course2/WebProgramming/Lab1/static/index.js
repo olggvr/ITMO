@@ -32,75 +32,75 @@ const table = document.getElementById("result-table");
 /** @type HTMLDivElement */
 const errorDiv = document.getElementById("error");
 
-async function onSubmit(ev) {
-    ev.preventDefault();
+async function onSubmit() {
 
-    const formData = new FormData(document.getElementById("data-form"));
+    const selectedX = document.querySelectorAll('input[name="x"]:checked');
+    const yValue = document.querySelector('input[name="y"]').value;
+    const rValue = document.querySelector('input[name="r"]:checked').value;
 
-    const values = {
-        x: formData.get('x'),
-        y: formData.get('y'),
-        r: formData.get('r')
-    };
+    for (const checkbox of selectedX) {
+        const xValue = checkbox.value;
+        const values = {
+            x: xValue,
+            y: yValue,
+            r: rValue
+        };
 
-    try {
-        validateFormInput(values);
-        errorDiv.hidden = true;
-    } catch (e) {
-        errorDiv.hidden = false;
-        errorDiv.textContent = e.message;
-        return
-    }
-
-
-    const response = await fetch('/fcgi-bin/lab1.jar', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json; charset=UTF-8'
-        },
-        body: JSON.stringify(values)
-    });
-
-    if (response.ok) {
-
-        const newRow = table.insertRow(-1);
-        const rowX = newRow.insertCell(0);
-        const rowY = newRow.insertCell(1);
-        const rowR = newRow.insertCell(2);
-        const rowTime = newRow.insertCell(3);
-        const rowNow = newRow.insertCell(4);
-        const rowResult = newRow.insertCell(5);
-
-        const result = await response.json();
-        rowX.textContent = result.x;
-        rowY.textContent = result.y;
-        rowR.textContent = result.z;
-        rowTime.textContent = result.time;
-        rowNow.textContent = result.now;
-        const res =rowResult.textContent = result.result.toString();
-        if (res==="true"){
-            rowResult.style.color="green"
-        }else{
-            rowResult.style.color="orange"
+        try {
+            validateFormInput(values);
+            errorDiv.hidden = true;
+        } catch (e) {
+            errorDiv.hidden = false;
+            errorDiv.textContent = e.message;
         }
 
+        const response = await fetch('/fcgi-bin/lab1.jar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json; charset=UTF-8'
+            },
+            body: JSON.stringify(values)
+        });
 
-    } else {
-        const result = await response.json();
-        rowResult.style.color = "red";
-        rowResult.textContent = "error";
-        rowNow.textContent = result.now;
-        console.error(result);
+        if (response.ok) {
+
+            const newRow = table.insertRow(-1);
+            const rowX = newRow.insertCell(0);
+            const rowY = newRow.insertCell(1);
+            const rowR = newRow.insertCell(2);
+            const rowTime = newRow.insertCell(3);
+            const rowNow = newRow.insertCell(4);
+            const rowResult = newRow.insertCell(5);
+
+            const result = await response.json();
+            rowX.textContent = result.x;
+            rowY.textContent = result.y;
+            rowR.textContent = result.z;
+            rowTime.textContent = result.time;
+            rowNow.textContent = result.now;
+            const res =rowResult.textContent = result.result.toString();
+            if (res==="true"){
+                rowResult.style.color="green"
+            }else{
+                rowResult.style.color="orange"
+            }
+
+
+        } else {
+            const result = await response.json();
+            rowResult.style.color = "red";
+            rowResult.textContent = "error";
+            rowNow.textContent = result.now;
+            console.error(result);
+        }
     }
 
-
     saveTableData();
-
 }
 
 
-const dataForm = document.getElementById("data-form");
-dataForm.addEventListener('submit', onSubmit);
+const but = document.getElementById("sub_button");
+but.addEventListener('click', onSubmit);
 document.addEventListener('DOMContentLoaded', dataLoader);
 
 

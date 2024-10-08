@@ -3,13 +3,13 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-class Parameters {
+class Params {
     private final int x;
     private final float y;
     private final float r;
 
     // constructor
-    public Parameters(String jsonString) throws ValidationException {
+    public Params(String jsonString) throws ValidationException {
         if (jsonString == null || jsonString.isEmpty()) {
             throw new ValidationException(400, "Missing request body");
         }
@@ -24,9 +24,9 @@ class Parameters {
             }
 
             // get values and validate
-            this.x = validateX((String) jsonObject.get("x").toString());
-            this.y = validateY((String) jsonObject.get("y").toString());
-            this.r = validateR((String)jsonObject.get("r").toString());
+            this.x = validateX(jsonObject.get("x").toString());
+            this.y = validateY(jsonObject.get("y").toString());
+            this.r = validateR(jsonObject.get("r").toString());
 
         } catch (ParseException e) {
             throw new ValidationException(400, "Error parsing json");

@@ -7,8 +7,6 @@ LD= ld
 clean:
 	rm *.o
 
-
-
 %.o: %.asm
 	$(ASM) $(ASMFLAGS) -o $@ $<
 

@@ -6,6 +6,6 @@ public class ValidationException extends Exception {
 
     public ValidationException(int statusCode, String message) {
         super(message);
-        this.statusCode = statusCode;
+        ValidationException.statusCode = statusCode;
     }
 }

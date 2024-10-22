@@ -3,12 +3,16 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+
 class Params {
     private final int x;
     private final float y;
     private final float r;
 
-    // constructor
     public Params(String jsonString) throws ValidationException {
         if (jsonString == null || jsonString.isEmpty()) {
             throw new ValidationException(400, "Missing request body");
@@ -16,14 +20,12 @@ class Params {
 
         try {
 
-            // JSON string parsing
             JSONParser parser = new JSONParser();
-            JSONObject jsonObject = (JSONObject) parser.parse(jsonString);  // JSON -> Object
+            JSONObject jsonObject = (JSONObject) parser.parse(jsonString);
             if (!jsonObject.containsKey("x") || !jsonObject.containsKey("y") || !jsonObject.containsKey("r")) {
                 throw new ValidationException(400, "Missing one param or more, json invalid");
             }
 
-            // get values and validate
             this.x = validateX(jsonObject.get("x").toString());
             this.y = validateY(jsonObject.get("y").toString());
             this.r = validateR(jsonObject.get("r").toString());
@@ -33,7 +35,19 @@ class Params {
         }
     }
 
-    // validation
+    /*
+        Method read request body and make object Params from it, returns it
+    */
+    public static Params getParameters(String contentLengthHeader) throws ValidationException, IOException {
+        int contentLength = Integer.parseInt(contentLengthHeader);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
+        char[] bodyChars = new char[contentLength];
+        reader.read(bodyChars, 0, contentLength);
+
+        String requestBody = new String(bodyChars);
+        return new Params(requestBody);
+    }
+
     private int validateX(String x) throws ValidationException {
         if (x == null || x.isEmpty()) {
             throw new ValidationException(400, "X is empty");
@@ -83,7 +97,6 @@ class Params {
         return Float.isNaN(number.floatValue());
     }
 
-    // getters
     public int getX() {
         return x;
     }

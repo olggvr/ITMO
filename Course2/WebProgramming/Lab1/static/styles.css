@@ -19,7 +19,7 @@ body {
 table.header{
     background-color: #353434;
     border-radius: 15px;
-    margin: 0% 25%;
+    margin: 0 25%;
     font-size: 1.5rem;
     font-family: cursive;
 }
@@ -30,7 +30,7 @@ table.header{
     justify-content: space-between;
     align-items: center;
     padding: 1%;
-    margin: 0% 15%;
+    margin: 0 15%;
 }
 
 :root{
@@ -53,16 +53,7 @@ svg text{
     font-family: cursive;
     fill: white;
 }
-/* tables styles */
-table.params.form {
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
-    border-collapse: collapse;
-    font-family: Arial, sans-serif;
-}
 
-/* table headers */
 th {
     background-color: #424242;
     font-weight: bold;
@@ -70,13 +61,13 @@ th {
     text-align: left;
 }
 
-/* table data cells */
+
 td {
     padding: 10px;
     text-align: center;
 }
 
-/* form styles */
+
 form {
     width: 100%;
     max-width: 600px;
@@ -85,10 +76,9 @@ form {
     border: 1px solid #ddd;
     background-color: #424242;
     border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* variants margin */
 label {
     margin-right: 10px;
 }
@@ -105,7 +95,7 @@ input[type="text"] {
     text-align: center;
 }
 
-/* submit button */
+
 button {
     padding: 10px 20px;
     background-color: #007bff;
@@ -119,16 +109,6 @@ button:hover {
     background-color: #0056b3;
 }
 
-/* table params
-table.params {
-    width: 420px;
-    margin: 20px 10px;
-    text-align: center;
-}
- */
-
-
-/* results table */
 .results-section {
     position: fixed;
     top: 20%;

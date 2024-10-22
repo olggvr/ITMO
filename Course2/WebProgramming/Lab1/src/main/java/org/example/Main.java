@@ -17,11 +17,11 @@ public class Main {
                 if (!"POST".equals(requestMethod)) {
                     throw new ValidationException(400, "Only POST requests are supported");
                 }
-
                 String contentLengthHeader = System.getProperties().getProperty("CONTENT_LENGTH");
                 if (contentLengthHeader == null) {
                     throw new ValidationException(400, "Content-Length header is missing");
                 }
+
                 var params = Params.getParameters(contentLengthHeader);
 
                 var startTime = Instant.now();

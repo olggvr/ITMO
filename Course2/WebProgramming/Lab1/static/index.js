@@ -88,9 +88,6 @@ async function onSubmit() {
 
         } else {
             const result = await response.json();
-            rowResult.style.color = "red";
-            rowResult.textContent = "error";
-            rowNow.textContent = result.now;
             console.error(result);
         }
     }

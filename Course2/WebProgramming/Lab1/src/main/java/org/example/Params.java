@@ -1,6 +1,7 @@
 package org.example;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,7 +19,7 @@ public class Params {
         this.r = validateR(r);
     }
 
-    public static Params getParameters(String contentLengthHeader) throws ValidationException, IOException {
+    public static String getRequestBodyStr(String contentLengthHeader) throws ValidationException, IOException {
         int contentLength = Integer.parseInt(contentLengthHeader);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
         char[] bodyChars = new char[contentLength];
@@ -28,12 +29,17 @@ public class Params {
             throw new ValidationException(400, "Bad request body");
         }
 
-        String requestBody = new String(bodyChars);
+        return new String(bodyChars);
+    }
 
+    public static Params parseRequestBody(String body) throws ValidationException {
         Gson gson = new Gson();
-        JsonParams jsonParams = gson.fromJson(requestBody, JsonParams.class);
-
-        return new Params(jsonParams.getX(), jsonParams.getY(), jsonParams.getR());
+        try{
+            JsonParams jsonParams = gson.fromJson(body, JsonParams.class);
+            return new Params(jsonParams.getX(), jsonParams.getY(), jsonParams.getR());
+        } catch (JsonSyntaxException e) {
+            throw new ValidationException(400, "Bad request body");
+        }
     }
 
     private int validateX(int x) throws ValidationException {
@@ -70,9 +76,16 @@ public class Params {
     }
 
     private static class JsonParams {
-        private int x;
-        private float y;
-        private float r;
+        private final int x;
+        private final float y;
+        private final float r;
+
+        private JsonParams(int x, float y, float r) {
+            this.x = x;
+            this.y = y;
+            this.r = r;
+        }
+
 
         public int getX() {
             return x;

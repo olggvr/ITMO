@@ -22,7 +22,8 @@ public class Main {
                     throw new ValidationException(400, "Content-Length header is missing");
                 }
 
-                var params = Params.getParameters(contentLengthHeader);
+                var reqBody = Params.getRequestBodyStr(contentLengthHeader);
+                var params = Params.parseRequestBody(reqBody);
 
                 var startTime = Instant.now();
                 var result = Calculator.calculate(params.getX(), params.getY(), params.getR());

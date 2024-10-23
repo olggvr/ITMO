@@ -36,7 +36,7 @@ public class Params {
         Gson gson = new Gson();
         try{
             JsonParams jsonParams = gson.fromJson(body, JsonParams.class);
-            return new Params(jsonParams.getX(), jsonParams.getY(), jsonParams.getR());
+            return new Params(jsonParams.x(), jsonParams.y(), jsonParams.r());
         } catch (JsonSyntaxException e) {
             throw new ValidationException(400, "Bad request body");
         }
@@ -75,28 +75,6 @@ public class Params {
         return r;
     }
 
-    private static class JsonParams {
-        private final int x;
-        private final float y;
-        private final float r;
-
-        private JsonParams(int x, float y, float r) {
-            this.x = x;
-            this.y = y;
-            this.r = r;
-        }
-
-
-        public int getX() {
-            return x;
-        }
-
-        public float getY() {
-            return y;
-        }
-
-        public float getR() {
-            return r;
-        }
+    private record JsonParams(int x, float y, float r) {
     }
 }

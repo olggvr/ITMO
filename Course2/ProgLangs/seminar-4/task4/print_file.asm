@@ -12,14 +12,12 @@ section .text
 global print_string
 global print_file
 
-; use exit system call to shut down correctly
+
 exit:
     mov  rax, SYS_EXIT
     xor  rdi, rdi
     syscall
 
-; These functions are used to print a null terminated string
-; rdi holds a string pointer
 print_string:
     push rdi
     call string_length
@@ -40,9 +38,6 @@ string_length:
 .end:
     ret
 
-; This function is used to print a substring with given length
-; rdi holds a string pointer
-; rsi holds a substring length
 print_substring:
     mov  rdx, rsi 
     mov  rsi, rdi
@@ -52,20 +47,12 @@ print_substring:
     ret
 
 print_file:
-    ; Вызовите open и откройте fname в режиме read only.
     mov  rax, SYS_OPEN
 
-    mov  rsi, O_RDONLY    ; Open file read only
-    mov  rdx, 0 	      ; We are not creating a file
-                          ; so this argument has no meaning
+    mov  rsi, O_RDONLY   
+    mov  rdx, 0 	     
+                          
     syscall
-    ; rax holds the opened file descriptor now
-
-    ; Вызовите mmap c правильными аргументами
-    ; Дайте операционной системе самой выбрать, куда отобразить файл
-    ; Размер области возьмите в размер страницы 
-    ; Область не должна быть общей для нескольких процессов 
-    ; и должна выделяться только для чтения.
 
     mov r8, rax
     push r8
@@ -100,8 +87,5 @@ print_file:
     mov rax, 3
     pop rdi
     syscall
-
-
-    ; с помощью print_string теперь можно вывести его содержимое
 
     call exit

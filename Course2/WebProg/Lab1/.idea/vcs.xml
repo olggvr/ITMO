@@ -2,7 +2,9 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/../../.." vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../../ProgrammingLanguages/labs/assignment-1-io-library" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../ProgLangs/labs/assignment-1-io-library" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../ProgLangs/labs/assignment-2-dictionary" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../ProgLangs/labs/assignment-2-dictionary/assignment-1-io-library" vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
   </component>
 </project>

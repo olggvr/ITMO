@@ -67,21 +67,13 @@ _start:
     push rdi           
     call print_string  
 
-     mov rax, 11
-     pop rdi
-     mov rsi, 4096
-     syscall
+    mov rax, 11
+    pop rdi
+    mov rsi, 4096
+    syscall
 
-    
     mov rax, 3          
     pop rdi      
     syscall            
 
-    call exit         
-
-
-
-
-
-
-
+    call exit

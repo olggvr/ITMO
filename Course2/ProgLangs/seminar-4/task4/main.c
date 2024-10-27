@@ -8,5 +8,6 @@ int main() {
     char filename[100];
     scanf("%s",filename);
     print_file(filename);
+    print_file(filename);
     return 0;
 }

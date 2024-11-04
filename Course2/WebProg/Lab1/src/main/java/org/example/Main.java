@@ -12,18 +12,8 @@ public class Main {
 
         while (fcgi.FCGIaccept() >= 0) {
             try {
-
-                String requestMethod = System.getProperties().getProperty("REQUEST_METHOD");
-                if (!"POST".equals(requestMethod)) {
-                    throw new ValidationException(400, "Only POST requests are supported");
-                }
-                String contentLengthHeader = System.getProperties().getProperty("CONTENT_LENGTH");
-                if (contentLengthHeader == null) {
-                    throw new ValidationException(400, "Content-Length header is missing");
-                }
-
-                var reqBody = Params.getRequestBodyStr(contentLengthHeader);
-                var params = Params.parseRequestBody(reqBody);
+                var reqBody = Receiver.getRequestBodyStr();
+                var params = Receiver.parseRequestBody(reqBody);
 
                 var startTime = Instant.now();
                 var result = Calculator.calculate(params.getX(), params.getY(), params.getR());

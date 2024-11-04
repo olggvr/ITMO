@@ -1,4 +1,4 @@
-package org.example;
+package org.example.service;
 
 import java.time.Duration;
 import java.time.Instant;

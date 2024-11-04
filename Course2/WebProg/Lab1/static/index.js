@@ -54,7 +54,7 @@ async function onSubmit() {
             errorDiv.textContent = e.message;
         }
 
-        const response = await fetch('/fcgi-bin/lab1.jar', {
+        const response = await fetch('/calculate', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json; charset=UTF-8'

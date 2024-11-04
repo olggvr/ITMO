@@ -75,6 +75,13 @@ public class Params {
         return r;
     }
 
-    private record JsonParams(int x, float y, float r) {
+    private static class JsonParams {
+
+        private int x;
+        private float y;
+        private float r;
+
+
+
     }
 }

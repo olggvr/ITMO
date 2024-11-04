@@ -1,7 +1,7 @@
 package org.example;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,11 +33,11 @@ public class Params {
     }
 
     public static Params parseRequestBody(String body) throws ValidationException {
-        Gson gson = new Gson();
+        ObjectMapper objectMapper = new ObjectMapper();
         try{
-            JsonParams jsonParams = gson.fromJson(body, JsonParams.class);
+            JsonParams jsonParams = objectMapper.readValue(body, JsonParams.class);
             return new Params(jsonParams.x(), jsonParams.y(), jsonParams.r());
-        } catch (JsonSyntaxException e) {
+        } catch (JsonProcessingException e) {
             throw new ValidationException(400, "Bad request body");
         }
     }
@@ -73,15 +73,5 @@ public class Params {
 
     public float getR() {
         return r;
-    }
-
-    private static class JsonParams {
-
-        private int x;
-        private float y;
-        private float r;
-
-
-
     }
 }

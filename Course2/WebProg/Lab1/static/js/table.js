@@ -1,6 +1,6 @@
 
 const table = document.getElementById("result-table");
-const errorDiv = document.getElementById("error");
+export const errorDiv = document.getElementById("error");
 
 function populateTableRow(data) {
     const newRow = table.insertRow(-1);
@@ -18,12 +18,10 @@ function populateTableRow(data) {
     rowNow.textContent = data.now;
     rowResult.textContent = data.result;
 
-    if (data.result === "true") {
-        rowResult.style.color = "green";
-    } else if (data.result === "false") {
-        rowResult.style.color = "orange";
-    } else {
+    if (data.result === "false") {
         rowResult.style.color = "red";
+    } else {
+        rowResult.style.color = "green";
     }
 }
 

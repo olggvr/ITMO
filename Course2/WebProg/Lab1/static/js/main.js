@@ -1,7 +1,7 @@
 
 import { validateFormInput } from './validate.js';
 import { fetchData } from './sendData.js';
-import {dataLoader, populateTableRow, saveTableData} from './table.js';
+import {dataLoader, populateTableRow, saveTableData, errorDiv} from './table.js';
 
 async function onSubmit() {
     const selectedX = document.querySelectorAll('input[name="x"]:checked');

@@ -16,6 +16,7 @@ public class ResponseMaker {
         Status: 200 OK
         Content-Type: application/json;charset=utf-8
         Content-Length: %d
+        Custom-Header: %s
         
         %s
         """;
@@ -43,10 +44,10 @@ public class ResponseMaker {
         }
         """;
 
-    public static void makeSuccessResponse(Params params, long execTime, boolean result) {
+    public static void makeSuccessResponse(Params params, long execTime, boolean result, String header) {
         String formattedNow = LocalDateTime.now().format(formatter);
         var json = String.format(RESULT_JSON, params.getX(), params.getY(), params.getR(), execTime, formattedNow, result);
-        var response = String.format(HTTP_RESPONSE, json.getBytes(StandardCharsets.UTF_8).length, json);
+        var response = String.format(HTTP_RESPONSE,json.getBytes(StandardCharsets.UTF_8).length, header, json);
         System.out.println(response);
     }
 

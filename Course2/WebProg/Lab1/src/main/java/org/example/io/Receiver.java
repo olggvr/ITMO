@@ -33,11 +33,11 @@ public class Receiver {
         char[] bodyChars = new char[contentLength];
         int charsRead = reader.read(bodyChars, 0, contentLength);
 
-        if (charsRead < contentLength) {
-            throw new ValidationException(400, "Bad request body");
-        }
-
         return new String(bodyChars);
+    }
+
+    public static String getCustomHeader(){
+        return System.getProperties().getProperty("CUSTOM_HEADER");
     }
 
 }

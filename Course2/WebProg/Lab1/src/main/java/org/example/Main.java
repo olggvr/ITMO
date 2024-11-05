@@ -25,11 +25,14 @@ public class Main {
 
                 long execTime = Calculator.getDuration(startTime, endTime);
 
-                ResponseMaker.makeSuccessResponse(params, execTime, result);
+                String header = Receiver.getCustomHeader();
+
+                ResponseMaker.makeSuccessResponse(params, execTime, result, header + "_new");
             } catch (ValidationException | IOException e) {
                 ResponseMaker.makeErrorResponse(e.getMessage());
             }
         }
     }
+
 }
 

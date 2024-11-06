@@ -31,7 +31,7 @@ public class ResponseMaker {
         {
             "x": "%d",
             "y": "%f",
-            "z": "%f",
+            "r": "%f",
             "time": "%s ns",
             "now": "%s",
             "result": %b

@@ -27,6 +27,11 @@ public class Main {
 
                 String header = Receiver.getCustomHeader();
 
+                int contNum = 0;
+                if (contNum == params.getX()) {
+                    ResponseMaker.makeRedirectResponse("http://localhost:8080/b.html");
+                }
+
                 ResponseMaker.makeSuccessResponse(params, execTime, result, header + "_new");
             } catch (ValidationException | IOException e) {
                 ResponseMaker.makeErrorResponse(e.getMessage());

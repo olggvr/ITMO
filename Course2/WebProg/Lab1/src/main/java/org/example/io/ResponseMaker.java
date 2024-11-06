@@ -27,6 +27,11 @@ public class ResponseMaker {
     
         %s
         """;
+    private static final String HTTP_REDIRECT = """
+            Status: 302 Moved Permanently
+            Content-Type: text/html;charset=utf-8
+            Location: %s
+            """;
     private static final String RESULT_JSON = """
         {
             "x": "%d",
@@ -55,6 +60,11 @@ public class ResponseMaker {
         String formattedNow = LocalDateTime.now().format(formatter);
         var json = String.format(ERROR_JSON, formattedNow, erMessage);
         var response = String.format(HTTP_ERROR, statusCode, json.getBytes(StandardCharsets.UTF_8).length, json);
+        System.out.println(response);
+    }
+
+    public static void makeRedirectResponse(String redirectUrl) {
+        var response = String.format(HTTP_REDIRECT, redirectUrl);
         System.out.println(response);
     }
 

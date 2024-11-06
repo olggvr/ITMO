@@ -15,7 +15,12 @@ async function fetchData(values) {
         return null;
     }
 
-    const customHeaderValue = response.headers.get('Custom-Header');  // Получить заголовок из ответа
+    if (response.redirected){
+        window.location.href = response.url;
+        return;
+    }
+
+    const customHeaderValue = response.headers.get('Custom-Header');
     console.log("Updated custom header:", customHeaderValue);
 
     return await response.json();

@@ -4,7 +4,7 @@
 int main() {
     int v = 20;
     print_var(v);
-    print_var(10);
+    print_var(42);
     print_var(VALUE);
 
     return 0;

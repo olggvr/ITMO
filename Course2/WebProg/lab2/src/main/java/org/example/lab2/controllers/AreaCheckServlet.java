@@ -21,8 +21,8 @@ public class AreaCheckServlet extends HttpServlet {
     private void processRequest(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         int x = Integer.parseInt(req.getParameter("x"));
-        int y = Integer.parseInt(req.getParameter("y"));
-        float r = Float.parseFloat(req.getParameter("r"));
+        double y = Double.parseDouble(req.getParameter("y"));
+        double r = Double.parseDouble(req.getParameter("r"));
 
         boolean result = checkArea(x, y, r);
 
@@ -31,11 +31,10 @@ public class AreaCheckServlet extends HttpServlet {
         req.setAttribute("r", r);
         req.setAttribute("result", result);
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("result.jsp");
-        dispatcher.forward(req, resp);
+        req.getRequestDispatcher("result.jsp").forward(req, resp);
     }
 
-    private boolean checkArea(int x, int y, float r) {
+    private boolean checkArea(int x, double y, double r) {
         if (x > 0 && y > 0) {
             return false;
         }
@@ -50,9 +49,7 @@ public class AreaCheckServlet extends HttpServlet {
             }
         }
         if (x < 0 && y > 0) {
-            if (x < -r || y > r){
-                return false;
-            }
+            return !(x < -r) && !(y > r);
         }
         return true;
     }

@@ -1,10 +1,5 @@
 package org.example.lab2.models;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 public class Validator {
 
     public static boolean validateIsNull(String x, String y, String r){

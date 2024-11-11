@@ -1,11 +1,11 @@
 package org.example.lab2.controllers;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.example.lab2.models.Point;
 
 import java.io.IOException;
 
@@ -23,13 +23,10 @@ public class AreaCheckServlet extends HttpServlet {
         int x = Integer.parseInt(req.getParameter("x"));
         double y = Double.parseDouble(req.getParameter("y"));
         double r = Double.parseDouble(req.getParameter("r"));
-
         boolean result = checkArea(x, y, r);
 
-        req.setAttribute("x", x);
-        req.setAttribute("y", y);
-        req.setAttribute("r", r);
-        req.setAttribute("result", result);
+        Point point = new Point(x, y, r, result);
+        req.setAttribute("result", point.result());
 
         req.getRequestDispatcher("result.jsp").forward(req, resp);
     }

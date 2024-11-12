@@ -1,6 +1,11 @@
 plugins {
-  id 'java'
   id 'war'
+}
+
+apply {plugin('war')}
+
+war {
+  archiveBaseName = 'lab2'
 }
 
 group 'org.example'
@@ -10,14 +15,7 @@ repositories {
   mavenCentral()
 }
 
-ext {
-  junitVersion = '5.11.0-M2'
-}
-
-sourceCompatibility = '17'
-targetCompatibility = '17'
-
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
   options.encoding = 'UTF-8'
 }
 

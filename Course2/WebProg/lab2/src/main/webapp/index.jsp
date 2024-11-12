@@ -43,8 +43,8 @@
       <line x1="50" y1="195" x2="50" y2="205" stroke-width="2"></line>
       <text x="50" y="220" font-family="Arial" font-size="14">-R</text>
 
-      <polygon points="200,200 275,200 275,50 200,50" fill="blue" opacity="0.7" stroke="white"></polygon>
-      <polygon points="200,200 275,200 200,350" fill="blue" opacity="0.7" stroke="white"></polygon>
+      <polygon points="200,200 50,200 50,50 200,50" fill="blue" opacity="0.7" stroke="white"></polygon>
+      <polygon points="200,200 275,200 200,275" fill="blue" opacity="0.7" stroke="white"></polygon>
       <path d="M 200,200 L 200,350 A 150,150 0 0 1 50,200 Z" fill="blue" opacity="0.7" stroke="white"></path>
     </svg>
   </div>
@@ -81,5 +81,6 @@
     <button id="sub_button">Отправить</button>
   </div>
 
+  <script src="./js/clickCheck.js"></script>
 </body>
 </html>

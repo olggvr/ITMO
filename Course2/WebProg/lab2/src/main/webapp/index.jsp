@@ -63,7 +63,6 @@
     <button id="sub_button">Отправить</button>
   </div>
 
-  <script type="module" src="./js/clickCheck.js"></script>
   <script type="module" src="./js/main.js"></script>
   <script type="module" src="./js/validation.js"></script>
   <script type="module" src="./js/exceptions.js"></script>

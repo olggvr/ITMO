@@ -44,7 +44,7 @@ body {
 }
 
 .inpR {
-    display: flex;
+    display: contents;
 }
 
 label {

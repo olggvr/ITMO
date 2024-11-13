@@ -43,11 +43,7 @@ body {
     margin-bottom: 20px;
 }
 
-.inpX, .inpY, .inpR {
-    display: contents;
-}
-
-.x-container{
+.inpR {
     display: flex;
 }
 
@@ -57,16 +53,12 @@ label {
     font-weight: bold;
 }
 
-input[type="text"], input[type="number"], input[type="radio"], input[type="checkbox"] {
+input[type="radio"] {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
     width: 20%;
     text-align: center;
-}
-
-input[type="checkbox"] {
-    width: auto;
 }
 
 button {
@@ -81,25 +73,4 @@ button {
 
 button:hover {
     background-color: #45a049;
-}
-
-.results-section {
-    margin-top: 20px;
-}
-
-#result-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #353434;
-}
-
-#result-table th, #result-table td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-}
-
-#result-table th {
-    background-color: #353434;
-    font-weight: bold;
 }

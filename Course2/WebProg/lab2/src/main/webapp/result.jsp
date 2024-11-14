@@ -1,12 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html>
 <head>
     <title>Results</title>
 </head>
 <body>
 <h1>Point results</h1>
-
-<p>Result: ${result}</p>
 
 <h2>Points before</h2>
 <table border="1">
@@ -16,7 +16,7 @@
         <th>R</th>
         <th>Result</th>
     </tr>
-    <c:forEach var="point" items="${points}">
+    <c:forEach var="point" items="${sessionScope.repo.points}">
         <tr>
             <td>${point.x()}</td>
             <td>${point.y()}</td>

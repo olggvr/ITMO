@@ -20,6 +20,7 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 dependencies {
+  implementation 'javax.servlet:jstl:1.2'
   compileOnly('jakarta.ejb:jakarta.ejb-api:4.0.1')
   compileOnly('jakarta.servlet:jakarta.servlet-api:6.1.0')
   compileOnly('jakarta.enterprise:jakarta.enterprise.cdi-api:4.1.0')

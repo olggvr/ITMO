@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.example.lab2.models.Point;
 import org.example.lab2.repository.PointsRepository;
 
@@ -28,12 +29,13 @@ public class AreaCheckServlet extends HttpServlet {
             boolean result = checkArea(x, y, r);
 
             Point point = new Point(x, y, r, result);
-            repositoryCheck(req, resp, point);
+            var session = req.getSession();
+            PointsRepository repo = repositoryCheck(req, session, point);
 
-            req.setAttribute("result", point.result());
+            session.setAttribute("repo", repo);
             resp.sendRedirect("./result.jsp");
         }catch (NumberFormatException | NullPointerException | IllegalStateException e){
-            req.getRequestDispatcher("/index.jsp").forward(req, resp);
+            resp.sendRedirect("./index.jsp");
         }
     }
 
@@ -57,14 +59,15 @@ public class AreaCheckServlet extends HttpServlet {
         return true;
     }
 
-    private void repositoryCheck(HttpServletRequest req, HttpServletResponse resp, Point point){
-        var session = req.getSession();
+    private PointsRepository repositoryCheck(HttpServletRequest req, HttpSession session, Point point){
         PointsRepository repo = (PointsRepository) session.getAttribute("repo");
         if (repo == null) {
             repo = new PointsRepository();
             session.setAttribute("repo", repo);
         }
         repo.addPoint(point);
+
+        return repo;
     }
 
 }

@@ -12,7 +12,7 @@ import java.util.List;
 @SessionScoped
 public class PointsRepository implements Serializable {
 
-    private List<Point> points = new ArrayList<>();
+    private final List<Point> points = new ArrayList<>();
 
     public void addPoint(Point point) {
         points.add(point);

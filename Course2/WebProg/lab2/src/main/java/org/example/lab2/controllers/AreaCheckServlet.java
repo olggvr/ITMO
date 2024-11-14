@@ -31,9 +31,9 @@ public class AreaCheckServlet extends HttpServlet {
             repositoryCheck(req, resp, point);
 
             req.setAttribute("result", point.result());
-            req.getRequestDispatcher("result.jsp").forward(req, resp);
+            resp.sendRedirect("./result.jsp");
         }catch (NumberFormatException | NullPointerException | IllegalStateException e){
-            req.getRequestDispatcher("index.jsp").forward(req, resp);
+            req.getRequestDispatcher("/index.jsp").forward(req, resp);
         }
     }
 

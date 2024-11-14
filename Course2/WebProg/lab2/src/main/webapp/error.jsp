@@ -7,13 +7,13 @@
     <h2>Error</h2>
     <p>
         <%
-            String errorMessage = (String) request.getAttribute("error");
+            String errorMessage = (String) session.getAttribute("message");
         %>
-        if (errorMessage != null) {
+        <% if (errorMessage != null) { %>
         <%= errorMessage %>
-        } else {
+        <% } else { %>
         No error message available.
-        }
+        <%}%>
     </p>
 </body>
 </html>

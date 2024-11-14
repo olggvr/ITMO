@@ -53,7 +53,7 @@
     <div class="inpR">
       <label>Радиус R</label>
       <div>
-        <label><input type="radio" name="r" value="1" required>1</label>
+        <label><input type="radio" name="r" value="1">1</label>
         <label><input type="radio" name="r" value="1.5">1.5</label>
         <label><input type="radio" name="r" value="2">2</label>
         <label><input type="radio" name="r" value="2.5">2.5</label>
@@ -63,8 +63,7 @@
     <button id="sub_button">Отправить</button>
   </div>
 
+  <script type="module" src="./js/sendData.js"></script>
   <script type="module" src="./js/main.js"></script>
-  <script type="module" src="./js/validation.js"></script>
-  <script type="module" src="./js/exceptions.js"></script>
 </body>
 </html>

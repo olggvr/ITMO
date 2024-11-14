@@ -1,4 +1,4 @@
-
+import {sendDataToServlet} from "./sendData.js"
 
 function getSelectedR() {
     const rRadio = document.querySelector("input[name='r']:checked");
@@ -23,4 +23,7 @@ svg.addEventListener('click', (event) => {
 
     values = {x:x, y:y, r:r};
     console.log("x = %d, y = %s, r = %f", values.x, values.y, values.r);
+
+    sendDataToServlet(values);
+    console.log("data sent!");
 });

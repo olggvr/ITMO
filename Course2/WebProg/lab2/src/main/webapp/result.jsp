@@ -4,6 +4,7 @@
 <html>
 <head>
     <title>Results</title>
+    <link rel="stylesheet" href="./styles/common.css">
     <link rel="stylesheet" type="text/css" href="./styles/table.css">
 </head>
 <body>

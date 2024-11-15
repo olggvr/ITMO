@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Lab-2</title>
+  <link rel="stylesheet" href="./styles/common.css">
   <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body>
@@ -16,13 +17,13 @@
 
   <div class="params">
     <svg width="400" height="400" class="graph">
-      <line x1="200" y1="0" x2="200" y2="400" stroke-width="2"></line>
-      <line x1="0" y1="200" x2="400" y2="200" stroke-width="2"></line>
+      <line x1="200" y1="0" x2="200" y2="400" stroke-width="2" stroke="black"></line>
+      <line x1="0" y1="200" x2="400" y2="200" stroke-width="2" stroke="black"></line>
 
-      <polygon points="200,0 195,10 205,10" fill="white"></polygon>
+      <polygon points="200,0 195,10 205,10" fill="black"></polygon>
       <text x="210" y="10" font-family="Arial" font-size="14">Y</text>
 
-      <polygon points="400,200 390,195 390,205" fill="white"></polygon>
+      <polygon points="400,200 390,195 390,205" fill="black"></polygon>
       <text x="390" y="220" font-family="Arial" font-size="14">X</text>
 
       <line x1="195" y1="50" x2="205" y2="50" stroke-width="2"></line>

@@ -19,7 +19,9 @@ public class ControllerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         processRequest(req, resp);
-        req.getRequestDispatcher("./check").forward(req, resp);
+        if(!resp.isCommitted()){
+            req.getRequestDispatcher("./check").forward(req, resp);
+        }
     }
 
     private void processRequest(HttpServletRequest req, HttpServletResponse resp)
@@ -32,18 +34,12 @@ public class ControllerServlet extends HttpServlet {
         String r = req.getParameter("r");
         HttpSession session = req.getSession();
 
-        try {
-            if (Validator.validateIsNull(x, y, r)) {
-                sendError(resp, session, String.format(ERROR_MSG, "x, y and r are required"));
-            } else if (Validator.validateIsEmpty(x, y, r)) {
-                sendError(resp, session, String.format(ERROR_MSG, "x, y, and r should not be empty"));
-            } else if (!Validator.isCorrectDiapason(Integer.parseInt(x), Double.parseDouble(y), Double.parseDouble(r))) {
-                sendError(resp, session, String.format(ERROR_MSG, "Incorrect range of variables"));
-            }
-        } catch (NumberFormatException e) {
-            sendError(resp, session, String.format(ERROR_MSG, "Number format error: " + e.getMessage()));
-        } catch (NullPointerException e) {
-            sendError(resp, session, String.format(ERROR_MSG, "Null value error: " + e.getMessage()));
+        if (Validator.validateIsNull(x, y, r)) {
+            sendError(resp, session, String.format(ERROR_MSG, "x, y and r are required"));
+        } else if (Validator.validateIsEmpty(x, y, r)) {
+            sendError(resp, session, String.format(ERROR_MSG, "x, y, and r should not be empty"));
+        } else if (!Validator.isCorrectDiapason(Integer.parseInt(x), Double.parseDouble(y), Double.parseDouble(r))) {
+            sendError(resp, session, String.format(ERROR_MSG, "incorrect range of variables"));
         }
     }
 

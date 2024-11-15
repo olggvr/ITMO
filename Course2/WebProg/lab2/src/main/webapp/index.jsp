@@ -49,19 +49,17 @@
     </svg>
   </div>
 
-  <div class="form">
-    <div class="inpR">
-      <label>Радиус R</label>
-      <div>
-        <label><input type="radio" name="r" value="1">1</label>
-        <label><input type="radio" name="r" value="1.5">1.5</label>
-        <label><input type="radio" name="r" value="2">2</label>
-        <label><input type="radio" name="r" value="2.5">2.5</label>
-        <label><input type="radio" name="r" value="3">3</label>
-      </div>
+  <div class="inpR">
+    <label>Радиус R</label>
+    <div>
+      <label><input type="radio" name="r" value="1">1</label>
+      <label><input type="radio" name="r" value="1.5">1.5</label>
+      <label><input type="radio" name="r" value="2">2</label>
+      <label><input type="radio" name="r" value="2.5">2.5</label>
+      <label><input type="radio" name="r" value="3">3</label>
     </div>
-    <button id="sub_button">Отправить</button>
   </div>
+  <div id="error" style="color: red; display: none;">Choose R</div>
 
   <script type="module" src="./js/sendData.js"></script>
   <script type="module" src="./js/main.js"></script>

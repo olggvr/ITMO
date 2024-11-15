@@ -36,13 +36,6 @@ body {
     background-color: #353434;
 }
 
-.form {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
 .inpR {
     display: contents;
 }
@@ -59,18 +52,4 @@ input[type="radio"] {
     border-radius: 4px;
     width: 20%;
     text-align: center;
-}
-
-button {
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #45a049;
 }

@@ -12,17 +12,23 @@ svg.addEventListener('click', (event) => {
     const rect = svg.getBoundingClientRect();
     const clickedX = event.clientX - rect.left;
     const clickedY = event.clientY - rect.top;
+    const errorMessage = document.getElementById("error");
 
     const centerX = 200;
     const centerY = 200;
     const r = getSelectedR();
+    if (r === null) {
+        errorMessage.style.display = "block";
+        return;
+    } else {
+        errorMessage.style.display = "none";
+    }
+
     const rStep = 150 / r;
 
     let x = Math.round((clickedX - centerX) / rStep);
     let y = (- (clickedY - centerY) / rStep).toFixed(2);
 
     values = {x:x, y:y, r:r};
-    console.log("x = %d, y = %s, r = %f", values.x, values.y, values.r);
-
     sendDataToServlet(values);
 });

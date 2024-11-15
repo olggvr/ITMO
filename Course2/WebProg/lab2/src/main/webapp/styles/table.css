@@ -14,8 +14,9 @@ table {
     width: 80%;
     margin: 20px auto;
     border-collapse: collapse;
-    background: #353434;
+    background: #424242;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: white;
 }
 
 th, td {
@@ -30,11 +31,11 @@ th {
 }
 
 tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #424242;
 }
 
 tr:hover {
-    background-color: #ddd;
+    background: #353434;
 }
 
 a {

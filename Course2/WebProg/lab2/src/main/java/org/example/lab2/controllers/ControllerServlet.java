@@ -5,9 +5,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.example.lab2.models.Validator;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet("/controller")
 public class ControllerServlet extends HttpServlet {
@@ -22,27 +24,31 @@ public class ControllerServlet extends HttpServlet {
 
     private void processRequest(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        try{
-            String x = req.getParameter("x");
-            String y = req.getParameter("y");
-            String r = req.getParameter("r");
+        resp.setContentType("application/json");
+        PrintWriter out = resp.getWriter();
 
+        String x = req.getParameter("x");
+        String y = req.getParameter("y");
+        String r = req.getParameter("r");
+        HttpSession session = req.getSession();
+
+        try {
             if (Validator.validateIsNull(x, y, r)) {
-                req.setAttribute("message", String.format(ERROR_MSG, "x, y and r are required"));
-                req.getRequestDispatcher("./error.jsp").forward(req, resp);
+                sendError(resp, session, String.format(ERROR_MSG, "x, y and r are required"));
+            } else if (Validator.validateIsEmpty(x, y, r)) {
+                sendError(resp, session, String.format(ERROR_MSG, "x, y, and r should not be empty"));
+            } else if (!Validator.isCorrectDiapason(Integer.parseInt(x), Double.parseDouble(y), Double.parseDouble(r))) {
+                sendError(resp, session, String.format(ERROR_MSG, "Incorrect range for variables"));
             }
-            else if (Validator.validateIsEmpty(x, y, r)) {
-                req.setAttribute("message", String.format(ERROR_MSG, "x, y, r should not be empty"));
-                req.getRequestDispatcher("./error.jsp").forward(req, resp);
-            }
-            else if (!Validator.isCorrectDiapason(Integer.parseInt(x), Double.parseDouble(y), Double.parseDouble(r))) {
-                req.setAttribute("message", String.format(ERROR_MSG, "incorrect diapason of variables"));
-                req.getRequestDispatcher("./error.jsp").forward(req, resp);
-            }
-        }catch (NumberFormatException | NullPointerException e){
-            req.setAttribute("error", e.toString());
-            req.getRequestDispatcher("./error.jsp").forward(req, resp);
+        } catch (NumberFormatException e) {
+            sendError(resp, session, String.format(ERROR_MSG, "Number format error: " + e.getMessage()));
+        } catch (NullPointerException e) {
+            sendError(resp, session, String.format(ERROR_MSG, "Null value error: " + e.getMessage()));
         }
     }
 
+    private void sendError(HttpServletResponse resp, HttpSession session, String message) throws IOException {
+        session.setAttribute("error", message);
+        resp.sendRedirect("./error.jsp");
+    }
 }

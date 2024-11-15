@@ -30,7 +30,7 @@ public class AreaCheckServlet extends HttpServlet {
 
             Point point = new Point(x, y, r, result);
             var session = req.getSession();
-            PointsRepository repo = repositoryCheck(req, session, point);
+            PointsRepository repo = repositoryCheck(session, point);
 
             session.setAttribute("repo", repo);
             resp.sendRedirect("./result.jsp");
@@ -59,7 +59,7 @@ public class AreaCheckServlet extends HttpServlet {
         return true;
     }
 
-    private PointsRepository repositoryCheck(HttpServletRequest req, HttpSession session, Point point){
+    private PointsRepository repositoryCheck(HttpSession session, Point point){
         PointsRepository repo = (PointsRepository) session.getAttribute("repo");
         if (repo == null) {
             repo = new PointsRepository();

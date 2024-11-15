@@ -4,11 +4,10 @@
 <html>
 <head>
     <title>Results</title>
+    <link rel="stylesheet" type="text/css" href="./styles/table.css">
 </head>
 <body>
 <h1>Point results</h1>
-
-<h2>Points before</h2>
 <table border="1">
     <tr>
         <th>X</th>

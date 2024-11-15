@@ -25,5 +25,4 @@ svg.addEventListener('click', (event) => {
     console.log("x = %d, y = %s, r = %f", values.x, values.y, values.r);
 
     sendDataToServlet(values);
-    console.log("data sent!");
 });

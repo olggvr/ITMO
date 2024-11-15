@@ -5,7 +5,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import org.example.lab2.models.Validator;
 
 import java.io.IOException;
@@ -27,25 +26,22 @@ public class ControllerServlet extends HttpServlet {
             String x = req.getParameter("x");
             String y = req.getParameter("y");
             String r = req.getParameter("r");
-            HttpSession session = req.getSession();
 
             if (Validator.validateIsNull(x, y, r)) {
-                session.setAttribute("message", String.format(ERROR_MSG, "x, y and r are required"));
-                resp.sendRedirect("./error.jsp");
+                req.setAttribute("message", String.format(ERROR_MSG, "x, y and r are required"));
+                req.getRequestDispatcher("./error.jsp").forward(req, resp);
             }
-
-            if (Validator.validateIsEmpty(x, y, r)) {
-                session.setAttribute("message", String.format(ERROR_MSG, "x, y, r should not be empty"));
-                resp.sendRedirect("./error.jsp");
+            else if (Validator.validateIsEmpty(x, y, r)) {
+                req.setAttribute("message", String.format(ERROR_MSG, "x, y, r should not be empty"));
+                req.getRequestDispatcher("./error.jsp").forward(req, resp);
             }
-
-            if (!Validator.isCorrectDiapason(Integer.parseInt(x), Double.parseDouble(y), Double.parseDouble(r))) {
-                session.setAttribute("message", String.format(ERROR_MSG, "incorrect diapason of variables"));
-                resp.sendRedirect("./error.jsp");
+            else if (!Validator.isCorrectDiapason(Integer.parseInt(x), Double.parseDouble(y), Double.parseDouble(r))) {
+                req.setAttribute("message", String.format(ERROR_MSG, "incorrect diapason of variables"));
+                req.getRequestDispatcher("./error.jsp").forward(req, resp);
             }
         }catch (NumberFormatException | NullPointerException e){
             req.setAttribute("error", e.toString());
-            resp.sendRedirect("./error.jsp");
+            req.getRequestDispatcher("./error.jsp").forward(req, resp);
         }
     }
 

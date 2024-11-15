@@ -38,7 +38,7 @@ public class ControllerServlet extends HttpServlet {
             } else if (Validator.validateIsEmpty(x, y, r)) {
                 sendError(resp, session, String.format(ERROR_MSG, "x, y, and r should not be empty"));
             } else if (!Validator.isCorrectDiapason(Integer.parseInt(x), Double.parseDouble(y), Double.parseDouble(r))) {
-                sendError(resp, session, String.format(ERROR_MSG, "Incorrect range for variables"));
+                sendError(resp, session, String.format(ERROR_MSG, "Incorrect range of variables"));
             }
         } catch (NumberFormatException e) {
             sendError(resp, session, String.format(ERROR_MSG, "Number format error: " + e.getMessage()));
@@ -49,6 +49,7 @@ public class ControllerServlet extends HttpServlet {
 
     private void sendError(HttpServletResponse resp, HttpSession session, String message) throws IOException {
         session.setAttribute("error", message);
+        resp.setStatus(400);
         resp.sendRedirect("./error.jsp");
     }
 }

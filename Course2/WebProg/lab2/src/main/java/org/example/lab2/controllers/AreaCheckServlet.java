@@ -1,6 +1,5 @@
 package org.example.lab2.controllers;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,12 +15,12 @@ public class AreaCheckServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+            throws IOException {
         processRequest(req, resp);
     }
 
     private void processRequest(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+            throws IOException {
         try{
             int x = Integer.parseInt(req.getParameter("x"));
             double y = Double.parseDouble(req.getParameter("y"));

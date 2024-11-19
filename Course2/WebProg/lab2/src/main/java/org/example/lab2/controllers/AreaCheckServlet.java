@@ -48,7 +48,7 @@ public class AreaCheckServlet extends HttpServlet {
             }
         }
         if (x < 0 && y < 0) {
-            if (x*x + y*y > r) {
+            if (x*x + y*y > r*r) {
                 return false;
             }
         }
@@ -68,5 +68,7 @@ public class AreaCheckServlet extends HttpServlet {
 
         return repo;
     }
+
+
 
 }

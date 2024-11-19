@@ -21,5 +21,4 @@ public class PointsRepository implements Serializable {
     public List<Point> getPoints() {
         return points;
     }
-
 }

@@ -1,5 +1,7 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="org.example.lab2.repository.PointsRepository" %>
+<%@ page import="org.example.lab2.models.Point" %>
+<%@ page import="java.util.List" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 
 <html>
 <head>
@@ -9,21 +11,25 @@
 </head>
 <body>
 <h1>Point results</h1>
-<table border="1">
+<table>
     <tr>
         <th>X</th>
         <th>Y</th>
         <th>R</th>
         <th>Result</th>
     </tr>
-    <c:forEach var="point" items="${sessionScope.repo.points}">
+    <%
+        PointsRepository repo = (PointsRepository) session.getAttribute("repo");
+        List<Point> points = repo.getPoints();
+        for (Point point : points) {
+    %>
         <tr>
-            <td>${point.x()}</td>
-            <td>${point.y()}</td>
-            <td>${point.r()}</td>
-            <td>${point.result()}</td>
+            <td><%= point.x() %></td>
+            <td><%= point.y() %></td>
+            <td><%= point.r() %></td>
+            <td><%= point.result() %></td>
         </tr>
-    </c:forEach>
+    <% } %>
 </table>
 
 <a href="index.jsp">Back to input form</a>

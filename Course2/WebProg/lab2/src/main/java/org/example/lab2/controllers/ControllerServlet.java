@@ -9,7 +9,6 @@ import jakarta.servlet.http.HttpSession;
 import org.example.lab2.models.Validator;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet("/controller")
 public class ControllerServlet extends HttpServlet {
@@ -25,9 +24,8 @@ public class ControllerServlet extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+            throws IOException {
         resp.setContentType("application/json");
-        PrintWriter out = resp.getWriter();
 
         String x = req.getParameter("x");
         String y = req.getParameter("y");

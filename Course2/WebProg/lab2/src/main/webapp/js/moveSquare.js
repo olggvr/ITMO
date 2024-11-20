@@ -14,6 +14,20 @@ function getMousePosition(event) {
     ];
 }
 
+async function saveSquarePosition(x, y, width, height) {
+    const data = { x, y, width, height };
+    const params = new URLSearchParams(data);
+
+    let response = await fetch(`./save-square?${params.toString()}`, {
+        method: 'GET',
+    });
+
+    if (response.ok){
+        console.log("success");
+    }
+
+}
+
 square.addEventListener('mousedown', (event) => {
     isDragging = true;
 
@@ -37,6 +51,7 @@ svg.addEventListener('mousemove', (event) => {
     const height = bbox.height;
     const points = `${newX},${newY + height} ${newX},${newY} ${newX + width},${newY} ${newX + width},${newY + height}`;
     square.setAttribute('points', points);
+    saveSquarePosition(newX, newY, width, height);
 });
 
 svg.addEventListener('mouseup', () => {

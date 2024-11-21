@@ -1,0 +1,7 @@
+# ninja log v6
+17	291	7536257445804907	CMakeFiles/seminar6.dir/heap-0.c.obj	e5c84904f85d537b
+155	303	7536270494209287	seminar6.exe	dfae08bfcb7e3e05
+8	175	7536258927658767	CMakeFiles/seminar6.dir/heap-1.c.obj	562b4da8b94e3873
+6	345	7536270754996337	build.ninja	5d868af7b2f4e6a3
+7	146	7536269971525455	CMakeFiles/seminar6.dir/task3/main.c.obj	2638cba30c944744
+10	153	7536270492764429	CMakeFiles/seminar6.dir/task3/vector.c.obj	72bac6134bc7a712

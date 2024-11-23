@@ -2,9 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 width, height = 800, 800
-x_min, x_max = -2.5, 1.5
-y_min, y_max = -2.0, 2.0
-max_iter = 100
+x_min, x_max = -0.8, -0.6
+y_min, y_max = -0.04, 0.04
+max_iter = 500
 
 def mandelbrot(c, max_iter):
 

@@ -86,8 +86,9 @@ void block_free(struct block_id bid) {
   }
 
   enum block_status status = bid.heap->status[bid.value];
-  if (status != BLK_ONE && status != BLK_FIRST) {
-    return; // Can only free BLK_ONE or BLK_FIRST
+  if (status == BLK_ONE) {
+    bid.heap->status[bid.value] = BLK_FREE;
+    return;
   }
 
   size_t i = bid.value;
@@ -140,6 +141,10 @@ int main() {
   heap_debug_info(&global_heap, stdout);
 
   block_free(id1);
+  heap_debug_info(&global_heap, stdout);
+
+  block_allocate(&global_heap, 1);
+  block_allocate(&global_heap, 1);
   heap_debug_info(&global_heap, stdout);
 
   block_free(id2);

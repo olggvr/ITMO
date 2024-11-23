@@ -87,7 +87,8 @@ void vector_resize(struct vector *v, size_t new_size) {
         v->data = new_data;
         v->capacity = new_size;
     }
-    v->size = new_size;}
+    v->size = new_size;
+}
 
 void vector_print(const struct vector *v, FILE *out) {
     for (size_t i = 0; i < v->size; i++) {

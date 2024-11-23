@@ -86,21 +86,27 @@ void block_free(struct block_id bid) {
   }
 
   enum block_status status = bid.heap->status[bid.value];
-  if (status == BLK_ONE) {
-    bid.heap->status[bid.value] = BLK_FREE;
-    return;
-  }
+  size_t i = 0;
 
-  size_t i = bid.value;
-  while (i < HEAP_BLOCKS && (bid.heap->status[i] == BLK_FIRST ||
-                             bid.heap->status[i] == BLK_CONT ||
-                             bid.heap->status[i] == BLK_LAST ||
-                             bid.heap->status[i] == BLK_ONE)) {
-    bid.heap->status[i] = BLK_FREE;
-    if (bid.heap->status[i] == BLK_LAST || bid.heap->status[i] == BLK_ONE) {
+  switch (status) {
+    case BLK_ONE:
+      bid.heap->status[bid.value] = BLK_FREE;
       break;
-    }
-    i++;
+
+    case BLK_FIRST:
+      i = bid.value;
+      while (i < HEAP_BLOCKS) {
+        if (bid.heap->status[i] == BLK_LAST) {
+          bid.heap->status[i] = BLK_FREE;
+          break;
+        }
+        bid.heap->status[i] = BLK_FREE;
+        i++;
+      }
+      break;
+
+    default:
+      break;
   }
 }
 

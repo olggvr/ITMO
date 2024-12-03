@@ -70,6 +70,25 @@
       </svg>
     </div>
 
+    <div class="inpX">
+      <label>Координата X</label>
+      <div class="x-container">
+        <label><input type="checkbox" name="x" value="-4">-4</label>
+        <label><input type="checkbox" name="x" value="-3">-3</label>
+        <label><input type="checkbox" name="x" value="-2">-2</label>
+        <label><input type="checkbox" name="x" value="-1">-1</label>
+        <label><input type="checkbox" name="x" value="0">0</label>
+        <label><input type="checkbox" name="x" value="1">1</label>
+        <label><input type="checkbox" name="x" value="2">2</label>
+        <label><input type="checkbox" name="x" value="3">3</label>
+        <label><input type="checkbox" name="x" value="4">4</label>
+      </div>
+    </div>
+    <div class="inpY">
+      <label>Координата Y</label>
+      <input type="text" name="y" placeholder="-3..5" maxlength="2" required>
+    </div>
+
     <div class="inpR">
       <label>Радиус R</label>
       <div>
@@ -81,6 +100,8 @@
       </div>
     </div>
     <div id="error" style="color: red; display: none;">Choose R</div>
+
+    <button id="sub_button">Отправить</button>
 
     <script type="module" src="./js/sendData.js"></script>
     <script type="module" src="./js/main.js"></script>

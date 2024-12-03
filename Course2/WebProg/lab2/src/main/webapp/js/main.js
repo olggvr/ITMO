@@ -7,6 +7,7 @@ function getSelectedR() {
 
 const svg = document.querySelector('.graph');
 let values = {};
+const button = document.getElementById('sub_button');
 
 svg.addEventListener('click', (event) => {
     const rect = svg.getBoundingClientRect();
@@ -32,3 +33,12 @@ svg.addEventListener('click', (event) => {
     values = {x:x, y:y, r:r};
     sendDataToServlet(values);
 });
+
+button.addEventListener('click', (event) => {
+    const xValue = document.querySelector('input[name="x"]:checked').value;
+    const yValue = document.querySelector('input[name="y"]').value;
+    const rValue = document.querySelector('input[name="r"]:checked').value;
+
+    const values = { x: xValue, y: yValue, r: rValue };
+    sendDataToServlet(values);
+})

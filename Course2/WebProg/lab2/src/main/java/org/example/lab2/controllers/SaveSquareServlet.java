@@ -6,21 +6,16 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
 @WebServlet("/save-square")
 public class SaveSquareServlet extends HttpServlet {
 
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         processRequest(req, resp);
     }
 
-    private void processRequest(HttpServletRequest req, HttpServletResponse resp)
-            throws IOException {
+    private void processRequest(HttpServletRequest req, HttpServletResponse resp) {
         String x = req.getParameter("x");
         String y = req.getParameter("y");
         String width = req.getParameter("width");

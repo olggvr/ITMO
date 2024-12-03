@@ -14,17 +14,21 @@ function getMousePosition(event) {
     ];
 }
 
-async function saveSquarePosition(x, y, width, height) {
+function saveSquarePosition(x, y, width, height) {
     const data = { x, y, width, height };
     const params = new URLSearchParams(data);
 
-    let response = await fetch(`./save-square?${params.toString()}`, {
+    fetch(`./save-square?${params.toString()}`, {
         method: 'GET',
+    })
+        .then(response => {
+            if (response.ok){
+                console.log("success");
+            }
+        })
+        .then(result => {
+            console.log("Success:", result);
     });
-
-    if (response.ok){
-        console.log("success");
-    }
 
 }
 

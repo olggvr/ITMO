@@ -17,6 +17,8 @@ public class ControllerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+
+        req.setAttribute("fromController", "true");
         processRequest(req, resp);
         if(!resp.isCommitted()){
             req.getRequestDispatcher("./check").forward(req, resp);

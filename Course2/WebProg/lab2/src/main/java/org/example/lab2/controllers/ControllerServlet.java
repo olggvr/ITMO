@@ -40,12 +40,15 @@ public class ControllerServlet extends HttpServlet {
             sendError(resp, session, String.format(ERROR_MSG, "x, y, and r should not be empty"));
         } else if (!Validator.isCorrectDiapason(Integer.parseInt(x), Double.parseDouble(y), Double.parseDouble(r))) {
             sendError(resp, session, String.format(ERROR_MSG, "incorrect range of variables"));
+        } else if (!Validator.isCorrectR(Double.parseDouble(r))){
+            sendError(resp, session, String.format(ERROR_MSG, "incorrect range of r"));
         }
     }
 
     private void sendError(HttpServletResponse resp, HttpSession session, String message) throws IOException {
         session.setAttribute("error", message);
         resp.setStatus(400);
+
         resp.sendRedirect("./error.jsp");
     }
 }

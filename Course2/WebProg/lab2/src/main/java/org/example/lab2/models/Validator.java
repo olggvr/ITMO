@@ -18,7 +18,7 @@ public class Validator {
     }
 
     public static boolean isCorrectR(double r){
-        Set<Double> allowed = new HashSet<Double>();
+        Set<Double> allowed = new HashSet<>();
         allowed.add(1.0);
         allowed.add(1.5);
         allowed.add(2.0);

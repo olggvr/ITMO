@@ -6,5 +6,6 @@
     <mapping directory="$PROJECT_DIR$/../labs/assignment-2-dictionary" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../labs/assignment-2-dictionary/assignment-1-io-library" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../labs/assignment-3-image-transform" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../labs/assignment-4-memory-allocator" vcs="Git" />
   </component>
 </project>

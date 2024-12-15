@@ -3,8 +3,8 @@ import numpy as np
 import math
 
 # Исходные данные: выборка из 20 чисел
-data = [-0.03, 0.73, -0.59, -1.59, 0.38, 1.49, 0.14, -0.62, -1.59, 1.45, -0.38, -1.49, -0.15, 0.63,
-        0.06, -1.59, 0.61, 0.62, -0.05, 1.56]
+data = [-0.03, 0.73, -0.59, -1.59, 0.38, 1.49, 0.14, -0.62, -1.59, 1.45, -0.38,
+        -1.49, -0.15, 0.63, 0.06, -1.59, 0.61, 0.62, -0.05, 1.56]
 
 # 1. Вариационный ряд
 data_sorted = sorted(data)
@@ -42,10 +42,7 @@ statistical_series = list(zip(unique_values, frequencies))
 def empirical_distribution(x, data_sorted):
     return sum(1 for value in data_sorted if value <= x) / len(data_sorted)
 
-# Эмпирическая функция для всех значений выборки
-empirical_values = [empirical_distribution(x, data_sorted) for x in data_sorted]
-
-# Аналитическая функция распределения (предполагаем равномерное распределение)
+# 7. Аналитическая функция распределения (предполагаем равномерное распределение)
 def analytical_distribution(x, min_val, max_val):
     if x < min_val:
         return 0
@@ -54,10 +51,7 @@ def analytical_distribution(x, min_val, max_val):
     else:
         return (x - min_val) / (max_val - min_val)
 
-# Аналитическая функция для всех значений выборки
-analytical_values = [analytical_distribution(x, min_val, max_val) for x in data_sorted]
-
-# 7. Построение группированного (интервального) ряда
+# 8. Построение группированного (интервального) ряда
 n = len(data_sorted)
 k = math.ceil(1 + math.log2(n))  # Количество интервалов по формуле Стерджесса
 intervals = np.linspace(min_val, max_val, k + 1)  # k интервалов
@@ -77,13 +71,13 @@ relative_frequencies = [freq / len(data_sorted) for freq in histogram_data]
 polygon_x = [(intervals[i] + intervals[i + 1]) / 2 for i in range(len(intervals) - 1)]
 polygon_y = relative_frequencies
 
-# 8. Построение графиков
+# 9. Построение графиков
 plt.figure(figsize=(16, 8))
 
 # Эмпирическая и аналитическая функции распределения
 plt.subplot(1, 2, 1)
-plt.step(data_sorted, empirical_values, where='post', label='Эмпирическая функция распределения')
-plt.plot(data_sorted, analytical_values, linestyle='--', color='orange', label='Аналитическая функция распределения')
+plt.step(data_sorted, [empirical_distribution(x, data_sorted) for x in data_sorted], where='post', label='Эмпирическая функция распределения')
+plt.plot(data_sorted, [analytical_distribution(x, min_val, max_val) for x in data_sorted], linestyle='--', color='orange', label='Аналитическая функция распределения')
 plt.xlabel('Значение выборки')
 plt.ylabel('F(x)')
 plt.title('Эмпирическая и аналитическая функции распределения')
@@ -103,8 +97,14 @@ plt.legend()
 plt.tight_layout()
 plt.show()
 
+# 10. Вывод аналитической функции распределения
+print("Аналитическая функция распределения F(x):")
+print(f"F(x) = 0, если x < {min_val}")
+print(f"F(x) = 1, если x > {max_val}")
+print(f"F(x) = (x - {min_val}) / ({max_val} - {min_val}), если {min_val} <= x <= {max_val}")
+
 # Вывод результатов
-print("Вариационный ряд:", data_sorted)
+print("\nВариационный ряд:", data_sorted)
 print("Статистический ряд (значение, частота):", statistical_series)
 print("Экстремальные значения: min =", min_val, ", max =", max_val)
 print("Размах:", range_val)
@@ -118,3 +118,8 @@ print("Исправленное среднеквадратическое отк�
 print("\nИнтервалы значений для гистограммы:")
 for i in range(len(intervals) - 1):
     print(f"Интервал {i + 1}: ({intervals[i]:.2f}, {intervals[i + 1]:.2f}) с частотой {relative_frequencies[i]:.2f}")
+
+# 11. Вывод значений для каждой точки
+print("\nЗначения эмпирической и аналитической функций распределения для каждого значения:")
+for x in data_sorted:
+    print(f"x = {x:.2f}, F(x) (эмпирическая) = {empirical_distribution(x, data_sorted):.4f}, F(x) (аналитическая) = {analytical_distribution(x, min_val, max_val):.4f}")

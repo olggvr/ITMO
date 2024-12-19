@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="dba4652a-ce4d-464c-8c4e-1ea86022d9b1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/hw_2/calc.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hw_2/template.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProgLangs/labs/assignment-2-dictionary" beforeDir="false" afterPath="$PROJECT_DIR$/../ProgLangs/labs/assignment-2-dictionary" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProgLangs/labs/assignment-2-dictionary/assignment-1-io-library" beforeDir="false" afterPath="$PROJECT_DIR$/../ProgLangs/labs/assignment-2-dictionary/assignment-1-io-library" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProgLangs/labs/assignment-2-dictionary/assignment-1-io-library/lib.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../ProgLangs/labs/assignment-2-dictionary/assignment-1-io-library/lib.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProgLangs/labs/assignment-2-dictionary/colon.inc" beforeDir="false" afterPath="$PROJECT_DIR$/../ProgLangs/labs/assignment-2-dictionary/colon.inc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProgLangs/labs/assignment-3-image-transform" beforeDir="false" afterPath="$PROJECT_DIR$/../ProgLangs/labs/assignment-3-image-transform" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProgLangs/labs/assignment-3-image-transform/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ProgLangs/labs/assignment-3-image-transform/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/teorver_practice.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/report.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/task1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Рябушко Индивидуальные задания по высшей математике. В 4 ч. Ч.4  (1).pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/практическая работа 6 новая.pdf" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2pTPYBH76WM04DnqzoVk0Q0nPxk" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.calc.executor": "Run",
+    "Python.task1.executor": "Run",
+    "Python.tmp.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/X240/Desktop/ITMO/Course2/teorver_practice",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\X240\Desktop\ITMO\Course2\teorver_practice" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-PY-242.22855.92" />
+        <option value="bundled-python-sdk-b068d85d1acf-399fe30bd8c1-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.22855.92" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dba4652a-ce4d-464c-8c4e-1ea86022d9b1" name="Changes" comment="" />
+      <created>1732787139471</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1732787139471</updated>
+      <workItem from="1732787166416" duration="5089000" />
+      <workItem from="1734019513707" duration="476000" />
+      <workItem from="1734303441633" duration="1283000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/teorver_practice$task1.coverage" NAME="task1 Coverage Results" MODIFIED="1734019857865" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/teorver_practice$tmp.coverage" NAME="tmp Coverage Results" MODIFIED="1734304071418" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

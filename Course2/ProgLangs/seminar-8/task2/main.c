@@ -12,16 +12,14 @@ void *create_shared_memory(size_t size) {
 }
 
 int main() {
-  int pipefd[2]; // Дескрипторы для конвейера
+  int pipefd[2];
   if (pipe(pipefd) == -1) {
     perror("pipe");
     exit(EXIT_FAILURE);
   }
 
-  // Выделяем память для 10 чисел типа int
   int *shmem = (int *)create_shared_memory(SIZE * sizeof(int));
 
-  // Заполняем массив числами от 1 до 10
   for (int i = 0; i < SIZE; i++) {
     shmem[i] = i + 1;
   }
@@ -31,8 +29,7 @@ int main() {
   int pid = fork();
 
   if (pid == 0) {
-    // Дочерний процесс
-    close(pipefd[0]); // Закрываем неиспользуемый конец для чтения
+    close(pipefd[0]);
     int index, value;
 
     while (1) {
@@ -40,7 +37,6 @@ int main() {
       scanf("%d", &index);
 
       if (index < 0) {
-        // Сообщаем родителю о завершении
         write(pipefd[1], &index, sizeof(int));
         break;
       }
@@ -49,9 +45,8 @@ int main() {
       scanf("%d", &value);
 
       if (index >= 0 && index < SIZE) {
-        shmem[index] = value; // Обновляем значение в массиве
+        shmem[index] = value;
 
-        // Сообщаем родительскому процессу об изменении
         write(pipefd[1], &index, sizeof(int));
       } else {
         printf("Invalid index!\n");
@@ -59,23 +54,20 @@ int main() {
     }
 
     close(pipefd[1]);
-    exit(0); // Завершаем работу дочернего процесса
+    exit(0);
   } else {
-    // Родительский процесс
-    close(pipefd[1]); // Закрываем неиспользуемый конец для записи
+    close(pipefd[1]);
 
     int received_index;
     printf("Child's pid is: %d\n", pid);
 
     while (1) {
-      // Ожидаем сообщения от дочернего процесса
       if (read(pipefd[0], &received_index, sizeof(int)) > 0) {
         if (received_index < 0) {
           printf("Child process has exited.\n");
           break;
         }
 
-        // Выводим массив при получении сообщения
         printf("Updated array: ");
         for (int i = 0; i < SIZE; i++) {
           printf("%d ", shmem[i]);
@@ -85,10 +77,9 @@ int main() {
     }
 
     close(pipefd[0]);
-    wait(NULL); // Ждём завершения дочернего процесса
+    wait(NULL);
   }
 
-  // Освобождаем общую память
   munmap(shmem, SIZE * sizeof(int));
 
   return 0;

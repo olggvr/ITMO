@@ -10,12 +10,13 @@ void *create_shared_memory(size_t size) {
   return mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANONYMOUS,
               -1, 0);
 }
+// 1 - 1 игрок
+// 2 - player 2
+// 3 - checker
 
 int main() {
-  // Выделяем память для 10 чисел типа int
   int *shmem = (int *)create_shared_memory(10 * sizeof(int));
 
-  // Заполняем массив числами от 1 до 10
   for (int i = 0; i < 10; i++) {
     shmem[i] = i + 1;
   }
@@ -24,9 +25,7 @@ int main() {
 
   int pid = fork();
 
-  if (pid == 0) { // проверяем, чтобы блок кода выполнял только дочерний процесс
-    // у родительского процесса fork возвращает
-    // Дочерний процесс
+  if (pid == 0) {
     int index, value;
 
     printf("Enter index (0-9): ");
@@ -36,19 +35,17 @@ int main() {
     scanf("%d", &value);
 
     if (index >= 0 && index < 10) {
-      shmem[index] = value; // Обновляем значение в массиве
+      shmem[index] = value;
     } else {
       printf("Invalid index!\n");
     }
 
-    exit(0); // Завершаем работу дочернего процесса
+    exit(0);
   } else {
-    // Родительский процесс
     printf("Child's pid is: %d\n", pid);
 
-    wait(NULL); // Ждём завершения дочернего процесса
+    wait(NULL);
 
-    // Выводим содержимое массива
     printf("Updated array: ");
     for (int i = 0; i < 10; i++) {
       printf("%d ", shmem[i]);
@@ -56,7 +53,6 @@ int main() {
     printf("\n");
   }
 
-  // Освобождаем общую память
   munmap(shmem, 10 * sizeof(int));
 
   return 0;

@@ -10,7 +10,7 @@ void *create_shared_memory(size_t size) {
   return mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANONYMOUS,
               -1, 0);
 }
-// 1 - 1 игрок
+// 1 - player 1
 // 2 - player 2
 // 3 - checker
 

@@ -28,8 +28,6 @@
   <component name="ChangeListManager">
     <list default="true" id="20d1fbef-1cda-4651-bf02-689ef9c09611" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/../labs/assignment-4-memory-allocator/.idea/assignment-4-memory-allocator.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task1/bad_print" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task1/main" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../labs/assignment-2-dictionary" beforeDir="false" afterPath="$PROJECT_DIR$/../labs/assignment-2-dictionary" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../labs/assignment-2-dictionary/assignment-1-io-library" beforeDir="false" afterPath="$PROJECT_DIR$/../labs/assignment-2-dictionary/assignment-1-io-library" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../labs/assignment-2-dictionary/assignment-1-io-library/lib.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../labs/assignment-2-dictionary/assignment-1-io-library/lib.asm" afterDir="false" />
@@ -38,13 +36,8 @@
       <change beforePath="$PROJECT_DIR$/../labs/assignment-3-image-transform/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../labs/assignment-3-image-transform/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../labs/assignment-4-memory-allocator" beforeDir="false" afterPath="$PROJECT_DIR$/../labs/assignment-4-memory-allocator" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task1/bad_print.c" beforeDir="false" afterPath="$PROJECT_DIR$/task1/bad_print.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extra/extra.c" beforeDir="false" afterPath="$PROJECT_DIR$/extra/extra.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task1/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/task1/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task1/makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/task2/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/task2/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task3/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/task3/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task4/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/task4/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task4/makefile" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,11 +95,6 @@
         <option name="nim.task.build.to.cache" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -117,7 +105,7 @@
       <option name="presentableId" value="Default" />
       <updated>1734266760169</updated>
       <workItem from="1734266761204" duration="1837000" />
-      <workItem from="1734767199752" duration="9996000" />
+      <workItem from="1734767199752" duration="13702000" />
     </task>
     <servers />
   </component>

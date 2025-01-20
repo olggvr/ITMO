@@ -72,9 +72,15 @@ document.addEventListener("DOMContentLoaded", function () {
         let y = (250 - coords.y) / 33;
 
         try {
-            validateFormInput({ x: x.toFixed(2), y: y.toFixed(2), r });
+            validateFormInput({ x: x, y: y.toFixed(2), r });
 
-            document.querySelector('input[id$=":x"]').value = x.toFixed(2);
+            const validXValues = [-2, -1.5, -1, -0.5, 0, 0.5, 1];
+            x = validXValues.reduce((prev, curr) =>
+                Math.abs(curr - x) < Math.abs(prev - x) ? curr : prev
+            );
+            console.log("x: " + x);
+
+            document.querySelector('select[id$=":x"]').value = x;
             document.querySelector('input[id$=":y"]').value = y.toFixed(2);
             document.querySelector('input[name="data-form:rSelect"][value="' + r + '"]').checked = true;
 

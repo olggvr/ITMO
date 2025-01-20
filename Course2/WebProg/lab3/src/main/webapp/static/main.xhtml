@@ -45,10 +45,16 @@
                 <div id="error" hidden="hidden"></div>
                 <h:form id="data-form">
                     <h:panelGrid columns="1" id="legend-x">
-                        <h:outputLabel for="y" value="Введите X (от -2 до 1):"/>
-                        <h:inputText id="x" value="#{controllerBean.x}" required="true">
-                            <f:validateDoubleRange minimum="-2" maximum="1"/>
-                        </h:inputText>
+                        <h:outputLabel for="x" value="Выберите X (от -2 до 1):"/>
+                        <h:selectOneMenu id="x" value="#{controllerBean.x}" required="true">
+                            <f:selectItem itemValue="-2" itemLabel="-2"/>
+                            <f:selectItem itemValue="-1.5" itemLabel="-1.5"/>
+                            <f:selectItem itemValue="-1" itemLabel="-1"/>
+                            <f:selectItem itemValue="-0.5" itemLabel="-0.5"/>
+                            <f:selectItem itemValue="0" itemLabel="0"/>
+                            <f:selectItem itemValue="0.5" itemLabel="0.5"/>
+                            <f:selectItem itemValue="1" itemLabel="1"/>
+                        </h:selectOneMenu>
                     </h:panelGrid>
                     <h:panelGrid columns="1" id="legend-y">
                         <h:outputLabel for="y" value="Введите Y (от -3 до 5):"/>

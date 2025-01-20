@@ -3,7 +3,7 @@ package org.example.lab3.configs;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import lab3.entity.Result;
+import org.example.lab3.entity.Result;
 
 public class HibernateSessionFactory {
     private static SessionFactory sessionFactory;

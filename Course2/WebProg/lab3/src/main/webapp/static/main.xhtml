@@ -24,9 +24,11 @@
                     <line id="axis-y" x1="250" y1="50" x2="250" y2="450" stroke="silver" stroke-width="2"/>
                     <polygon id="arrow-x" points="450,245 450,255 460,250" fill="silver"/>
                     <polygon id="arrow-y" points="245,50 255,50 250,40" fill="silver"/>
-                    <rect id="rect" x="250" y="251" width="99" height="100" fill="white"/>
-                    <path id="arc" d="M 150 251 A 100 100 0 0 0 251 350 L 251 251 Z" fill="white"/>
-                    <polygon id="triangle" points="251,249 251,200 200,249" fill="white"/>
+
+                    <rect id="rect" x="250" y="200" width="100" height="50" fill="white"/>
+                    <path id="arc" d="M 200 250 A 50 50 0 0 1 250 200 L 250 250 Z" fill="white"/>
+                    <polygon id="triangle" points="250,250 250,350 350,250" fill="white"/>
+
                     <text x="260" y="50" id="text-y" fill="white">Y</text>
                     <text x="450" y="240" id="text-x" fill="white">X</text>
                     <line id="mark-neg-rx" x1="150" y1="245" x2="150" y2="255" stroke="silver" stroke-width="2"/>
@@ -43,15 +45,15 @@
                 <div id="error" hidden="hidden"></div>
                 <h:form id="data-form">
                     <h:panelGrid columns="1" id="legend-x">
-                        <h:outputLabel for="y" value="Введите Y (от -5 до 5):"/>
+                        <h:outputLabel for="y" value="Введите X (от -2 до 1):"/>
                         <h:inputText id="x" value="#{controllerBean.x}" required="true">
-                            <f:validateDoubleRange minimum="-5" maximum="5"/>
+                            <f:validateDoubleRange minimum="-2" maximum="1"/>
                         </h:inputText>
                     </h:panelGrid>
                     <h:panelGrid columns="1" id="legend-y">
-                        <h:outputLabel for="y" value="Введите Y (от -5 до 3):"/>
+                        <h:outputLabel for="y" value="Введите Y (от -3 до 5):"/>
                         <h:inputText id="y" value="#{controllerBean.y}" required="true">
-                            <f:validateDoubleRange minimum="-5" maximum="3"/>
+                            <f:validateDoubleRange minimum="-3" maximum="5"/>
                         </h:inputText>
                     </h:panelGrid>
                     <h:panelGrid columns="1" id="legend-r">
@@ -59,10 +61,10 @@
                             <h:outputLabel for="rSelect" value="Выберите радиус R:"/>
                             <h:selectOneRadio id="rSelect" value="#{controllerBean.r}" required="true">
                                 <f:selectItem itemValue="1" itemLabel="1"/>
-                                <f:selectItem itemValue="1.5" itemLabel="1.5"/>
                                 <f:selectItem itemValue="2" itemLabel="2"/>
-                                <f:selectItem itemValue="2.5" itemLabel="2.5"/>
                                 <f:selectItem itemValue="3" itemLabel="3"/>
+                                <f:selectItem itemValue="4" itemLabel="4"/>
+                                <f:selectItem itemValue="5" itemLabel="5"/>
                             </h:selectOneRadio>
                         </h:panelGroup>
                     </h:panelGrid>

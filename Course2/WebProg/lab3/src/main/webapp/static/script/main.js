@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert("Много знаков после запятой");
                 return false;
             }
-            if (value < -5 || value > 5) {
-                alert("Y не в пределах от -5 до 5");
+            if (value < -3 || value > 5) {
+                alert("Y не в пределах от -3 до 5");
                 return false;
             }
             return true;
@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert("Х неверен");
                 return false;
             }
-            if (value < -5 || value > 5) {
-                alert("Х не в пределах от -5 до 5");
+            if (value < -2 || value > 1) {
+                alert("Х не в пределах от -2 до 1");
                 return false;
             }
             return true;
@@ -123,11 +123,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const scaleFactor = r / 3;
 
         const elementsToUpdate = [
-            {id: "rect", attrs: {width: 100 * scaleFactor, height: 100 * scaleFactor, x: 250, y: 251}},
+            {id: "rect", attrs: {width: 100 * scaleFactor, height: 50 * scaleFactor, x: 250, y: 250 - 50 * scaleFactor}},
             {
-                id: "arc", attrs: {d: `M ${250 -  100 * scaleFactor} 251 A ${100 * scaleFactor} ${100 * scaleFactor} 0 0 0 251 ${250 + 100 * scaleFactor} L 251 251 Z`}
+                id: "arc", attrs: {d: `M ${250 -  50 * scaleFactor} 250 A ${50 * scaleFactor} ${50 * scaleFactor} 0 0 1 250 ${250 - 50 * scaleFactor} L 250 250 Z`}
             },
-            {id: "triangle", attrs: {points: `251,249 251,${250 - 50 * scaleFactor} ${250 - 50 * scaleFactor},249`}},
+            {id: "triangle", attrs: {points: `250,250 250,${250 + 100 * scaleFactor} ${250 + 100 * scaleFactor},250`}},
             {id: "mark-neg-rx", attrs: {x1: 250 - 100 * scaleFactor, x2: 250 - 100 * scaleFactor}},
             {id: "mark-rx", attrs: {x1: 250 + 100 * scaleFactor, x2: 250 + 100 * scaleFactor}},
             {id: "mark-ry", attrs: {y1: 250 - 100 * scaleFactor, y2: 250 - 100 * scaleFactor}},

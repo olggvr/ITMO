@@ -13,14 +13,9 @@ public class CheckHitService implements Serializable {
     private final transient ResultRepository ResultRepository = new ResultRepository();
 
     public boolean checkDot(float x, float y, float r) {
-        if (x <= 0 && y >= 0 && (y <= (-x/2 - r))) {
-            return true;
-        } else if (x >= 0 && y <= 0 && x <= r && -y <= r) {
-            return true;
-        } else if (x < 0 && y < 0) {
-            return (x * x + y * y <= r * r);
-        }
-        return false;
+        return (x > 0 && x < r && y > 0 && y < r/2) ||
+                (x >= 0 && y <= 0 && (x - y) < r/2) ||
+                (x < 0 && y > 0 && x * x + y * y <= r * r);
     }
 
     public void saveResult(Result result) {

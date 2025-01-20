@@ -1,7 +1,7 @@
 package org.example.lab3.controllers;
 
 import jakarta.annotation.ManagedBean;
-import jakarta.enterprise.context.SessionScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
 import org.example.lab3.service.CheckHitService;
 import org.example.lab3.entity.Result;
@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Named("controllerBean")
-@SessionScoped
+@ApplicationScoped
 @ManagedBean
 public class ControllerBean implements Serializable {
 

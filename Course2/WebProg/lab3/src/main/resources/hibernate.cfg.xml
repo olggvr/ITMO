@@ -9,7 +9,7 @@
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="jakarta.persistence.jdbc.driver">org.postgresql.Driver</property>
 
-        <property name="hibernate.connection.url">jdbc:postgresql://web_3-postgres-1:5432/postgres</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://lab3-postgres-1:5432/postgres</property>
         <property name="hibernate.connection.username">user</property>
         <property name="hibernate.connection.password">pass</property>
 

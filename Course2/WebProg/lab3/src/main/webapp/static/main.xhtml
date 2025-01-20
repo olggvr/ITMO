@@ -42,7 +42,7 @@
                 </svg>
             </td>
             <td id="input">
-                <div id="error" hidden="hidden"></div>
+                <div id="error" hidden="hidden">Error div</div>
                 <h:form id="data-form">
                     <h:panelGrid columns="1" id="legend-x">
                         <h:outputLabel for="x" value="Выберите X (от -2 до 1):"/>
@@ -101,6 +101,7 @@
             </td>
         </tr>
     </table>
+    <div id="message-container" style="color: red;"></div>
     <h:form>
         <h:commandButton value="Начальная страница" action="welcome"/>
         <h:commandButton value="Очистить результаты" action="#{controllerBean.clearResults}" />

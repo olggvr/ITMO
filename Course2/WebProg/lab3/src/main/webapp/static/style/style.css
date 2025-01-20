@@ -67,50 +67,8 @@ line, polygon, rect, path, text {
     font-weight: bold;
 }
 
-h:commandButton {
-    display: block;
-    margin: 15px auto;
-    padding: 10px 20px;
-    font-size: 1rem;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-}
-
-h:commandButton:hover {
-    background-color: #2980b9;
-}
-
-h:inputText, h:selectOneRadio {
-    width: calc(100% - 20px);
-    padding: 5px;
-    margin: 10px 0;
-    border: 1px solid #555;
-    background-color: #2c2f3b;
-    color: #fff;
-    border-radius: 5px;
-}
-
-h:outputLabel {
-    display: block;
-    margin: 10px 0 5px;
-    font-weight: bold;
-}
-
 #coordinate-plate, #input, #result {
     text-align: center;
-}
-
-#legend-x, #legend-y, #legend-r {
-    margin: 10px 0;
-}
-
-#submit {
-    margin-top: 20px;
 }
 
 #error {

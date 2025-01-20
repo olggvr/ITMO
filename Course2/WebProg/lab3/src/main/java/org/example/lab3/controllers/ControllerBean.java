@@ -6,6 +6,7 @@ import jakarta.inject.Named;
 import org.example.lab3.service.CheckHitService;
 import org.example.lab3.entity.Result;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
@@ -14,13 +15,13 @@ import java.util.List;
 @ManagedBean
 public class ControllerBean implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
+    private final transient CheckHitService checkHitService = new CheckHitService();
 
     private float x;
     private float y;
     private float r;
-
-    private transient CheckHitService checkHitService = new CheckHitService();
 
     public float getX() {
         return x;

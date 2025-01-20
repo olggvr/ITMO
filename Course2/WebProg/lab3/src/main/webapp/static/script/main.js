@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
             r: formData.get('data-form:rSelect')
         };
 
-        const errorDiv = document.getElementById("error");
+        const errorDiv = document.getElementById("message-container");
 
         try {
             validateFormInput(values);
@@ -168,9 +168,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const svgY = 250 - y * 33;
 
             const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-            circle.setAttribute("cx", svgX);
-            circle.setAttribute("cy", svgY);
-            circle.setAttribute("r", 2);
+            circle.setAttribute("cx", svgX.toString());
+            circle.setAttribute("cy", svgY.toString());
+            circle.setAttribute("r", "2");
             circle.setAttribute("fill", result ? "green" : "red");
             circle.classList.add("data-point");
 

@@ -3,7 +3,7 @@ package org.example.lab3.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "results")
+@Table()
 public class Result {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,19 +20,9 @@ public class Result {
         this.r = r;
         this.result = result;
     }
-
-
     public Result() {}
 
-    public float getX() {
-        return x;
-    }
-
-    public void setX(float x) {
-        this.x = x;
-    }
-
-    public boolean isResult() {
+    public boolean getResult() {
         return result;
     }
 
@@ -40,12 +30,12 @@ public class Result {
         this.result = result;
     }
 
-    public float getR() {
-        return r;
+    public float getX() {
+        return x;
     }
 
-    public void setR(float r) {
-        this.r = r;
+    public void setX(float x) {
+        this.x = x;
     }
 
     public float getY() {
@@ -56,14 +46,13 @@ public class Result {
         this.y = y;
     }
 
-    public int getId() {
-        return id;
+    public float getR() {
+        return r;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setR(float r) {
+        this.r = r;
     }
-
 
     @Override
     public String toString() {

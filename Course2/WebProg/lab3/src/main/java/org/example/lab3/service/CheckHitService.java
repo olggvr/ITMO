@@ -25,5 +25,11 @@ public class CheckHitService implements Serializable {
     public List<Result> findAllResults() {
         return ResultRepository.findAll();
     }
+
+    public void clearAllResults() {
+        ResultRepository resultRepository = new ResultRepository();
+        resultRepository.clean();
+    }
+
 }
 

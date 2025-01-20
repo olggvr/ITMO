@@ -52,6 +52,8 @@ public class ControllerBean implements Serializable {
         checkHitService.saveResult(result);
     }
 
+    public void clearResults() {checkHitService.clearAllResults();}
+
     public List<Result> getResultList() {
         return checkHitService.findAllResults();
     }

@@ -1,3 +1,6 @@
 [submodule "Course2/programminglanguages/labs/assignment-1-io-library"]
 	path = Course2/programminglanguages/labs/assignment-1-io-library
 	url = https://gitlab.se.ifmo.ru/Cucumber090-1/assignment-1-io-library
+[submodule "Course2/WebProg/web-lab4-back"]
+	path = Course2/WebProg/web-lab4-back
+	url = https://github.com/olggvr/web-lab4-back

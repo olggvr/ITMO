@@ -4,3 +4,6 @@
 [submodule "Course2/WebProg/web-lab4-back"]
 	path = Course2/WebProg/web-lab4-back
 	url = https://github.com/olggvr/web-lab4-back
+[submodule "Course2/WebProg/web-lab4-front"]
+	path = Course2/WebProg/web-lab4-front
+	url = https://github.com/olggvr/web-lab4-front

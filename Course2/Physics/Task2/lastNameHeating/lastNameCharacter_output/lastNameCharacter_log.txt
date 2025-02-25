@@ -1,0 +1,21 @@
+FlexPDE Version 8.00/W64  22:29:32 Dec  1 2023  Time:11:12:23 2/25/25  Microsoft Windows [Version 10.0.19045.5487]
+Format:
+ +   wall | charged | 
+ +  clock |   CPU   | ...progress data...).
+
+START C:\Users\X240\Desktop\ITMO\Course2\Physics\Task2\lastNameHeating\lastNameCharacter.pde  11:12:23 2/25/25
+ +    0:00|     0:00| Mesh Import Failed 
+ +    0:01|     0:00| Mesh Generation Complete 
+ +    0:01|     0:00| Mesh dump written to C:\Users\X240\Desktop\ITMO\Course2\Physics\Task2\lastNameHeating\lastNameCharacter_output\lastNameCharacter_initialmesh.xfr 
+ +    0:01|     0:00|  4 Threads  Cubic (3)   
+ +    0:01|     0:00| (1)Linear Step 1 Error= 1.54e+16 Orthomin/ILU(76)
+ +    0:01|     0:00| (1)Linear Step 2 Error= 6.26e+16 Orthomin/ILU(65)
+ +    0:01|     0:00| (1)Linear Step 3 Error= 1.60e+18 Orthomin/ILU(251)
+ +    0:01|     0:00| (1)Linear Step 4 Error= 1.64e+17 Orthomin/ILU(51)
+ +    0:01|     0:00| (1)Linear Step 5 Error= 9.32e+16 Orthomin/ILU(51)
+ +    0:01|     0:00| GRID 1 Nodes=71 Cells=107 DOF=532 RMS ERR= 4.30e-16 MAX ERR= 6.81e-16 MEM(KiB)=4384
+ +    0:01|     0:01| --DONE-- 11:12:24 2/25/25
+
+ Problem Time:11:12:24 2/25/25  Elapsed Time:00:00:01
+
+ Stop Time:13:24:43 2/25/25  Elapsed Time:02:12:20

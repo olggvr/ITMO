@@ -1,0 +1,7 @@
+TITLE 'Simple diffusion equation' { this problem lacks sources and boundary conditions } 
+VARIABLES T 
+EQUATIONS div(-grad(T)) = 100*exp( -(x-2.5)^2 - (y-1.5)^2)
+BOUNDARIES REGION 1 START(0,0) VALUE(T)=20  LINE TO (5,0)  NATURAL(T)=0    line TO (5,3) NATURAL(T)=0     line  TO (0,3)  NATURAL(T)=0   line TO CLOSE 
+PLOTS CONTOUR(T) 
+PLOTS CONTOUR(100*exp( -(x-2.5)^2 - (y-1.5)^2)) 
+VECTOR(-grad(T)) END

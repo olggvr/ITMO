@@ -1,0 +1,18 @@
+FlexPDE Version 8.00/W64  22:29:32 Dec  1 2023  Time:10:54:42 2/25/25  Microsoft Windows [Version 10.0.19045.5487]
+Format:
+ +   wall | charged | 
+ +  clock |   CPU   | ...progress data...).
+
+START C:\Users\X240\Desktop\ITMO\Course2\Physics\Task2\script1\script1.pde  10:54:42 2/25/25
+ +    0:00|     0:00| Mesh Import Failed 
+ +    0:00|     0:00| Mesh Generation Complete 
+ +    0:00|     0:00| Mesh dump written to C:\Users\X240\Desktop\ITMO\Course2\Physics\Task2\script1\script1_output\script1_initialmesh.xfr 
+ +    0:01|     0:00|  4 Threads  Cubic (3)   
+ +    0:01|     0:00| (1)Linear Step 1 Error= 9.106085 Orthomin/ILU(17)
+ +    0:01|     0:00| (1)Linear Step 2 Error= 8.37e-10 Orthomin/ILU(19)
+ +    0:01|     0:00| GRID 1 Nodes=75 Cells=118 DOF=577 RMS ERR= 4.054e-5 MAX ERR= 7.325e-5 MEM(KiB)=4474
+ +    0:01|     0:01| --DONE-- 10:54:44 2/25/25
+
+ Problem Time:10:54:44 2/25/25  Elapsed Time:00:00:02
+
+ Stop Time:13:24:43 2/25/25  Elapsed Time:02:30:01

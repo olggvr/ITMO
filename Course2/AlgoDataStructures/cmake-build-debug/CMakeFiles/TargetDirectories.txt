@@ -1,0 +1,3 @@
+C:/Users/X240/Desktop/ITMO/Course2/AlgoDataStructures/cmake-build-debug/CMakeFiles/AlgoDataStructures.dir
+C:/Users/X240/Desktop/ITMO/Course2/AlgoDataStructures/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/X240/Desktop/ITMO/Course2/AlgoDataStructures/cmake-build-debug/CMakeFiles/rebuild_cache.dir

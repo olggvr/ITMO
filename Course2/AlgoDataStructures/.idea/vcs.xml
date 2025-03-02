@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="VcsDirectoryMappings">
-    <mapping directory="$PROJECT_DIR$/../.." vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../ProgLangs/labs/assignment-1-io-library" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../ProgLangs/labs/assignment-2-dictionary" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../ProgLangs/labs/assignment-2-dictionary/assignment-1-io-library" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../ProgLangs/labs/assignment-3-image-transform" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../ProgLangs/labs/assignment-4-memory-allocator" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../ProgLangs/labs/assignment-5-sepia-filter" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../WebProg/lab4-back" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../WebProg/lab4-front" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../WebProg/web-lab4-back" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../WebProg/web-lab4-front" vcs="Git" />
+    <mapping directory="$USER_HOME$" vcs="Git" />
   </component>
 </project>

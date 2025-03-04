@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="64c3eadd-c905-44f5-b994-aaf6a1c64343" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../AlgoDataStructures/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AlgoDataStructures/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AlgoDataStructures/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/../AlgoDataStructures/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AlgoDataStructures/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/../AlgoDataStructures/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AlgoDataStructures/cmake-build-debug/AlgoDataStructures.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../AlgoDataStructures/cmake-build-debug/AlgoDataStructures.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AlgoDataStructures/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../AlgoDataStructures/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AlgoDataStructures/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../AlgoDataStructures/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AlgoDataStructures/third.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../AlgoDataStructures/third.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Physics/Task2/lastNameHeating/lastNameCharacter.pde" beforeDir="false" afterPath="$PROJECT_DIR$/../Physics/Task2/lastNameHeating/lastNameCharacter.pde" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Physics/Task2/lastNameHeating/lastNameCharacter.pde.bak" beforeDir="false" afterPath="$PROJECT_DIR$/../Physics/Task2/lastNameHeating/lastNameCharacter.pde.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Physics/Task2/lastNameHeating/lastNameCharacter_output/lastNameCharacter.pg8" beforeDir="false" afterPath="$PROJECT_DIR$/../Physics/Task2/lastNameHeating/lastNameCharacter_output/lastNameCharacter.pg8" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Physics/Task2/lastNameHeating/lastNameCharacter_output/lastNameCharacter_debug.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Physics/Task2/lastNameHeating/lastNameCharacter_output/lastNameCharacter_debug.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Physics/Task2/lastNameHeating/lastNameCharacter_output/lastNameCharacter_initialmesh.xfr" beforeDir="false" afterPath="$PROJECT_DIR$/../Physics/Task2/lastNameHeating/lastNameCharacter_output/lastNameCharacter_initialmesh.xfr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Physics/Task2/lastNameHeating/lastNameCharacter_output/lastNameCharacter_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Physics/Task2/lastNameHeating/lastNameCharacter_output/lastNameCharacter_log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Physics/Task2/lastNameHeating/lastNameCharacter_output/lastNameCharacter_restart.xfr" beforeDir="false" afterPath="$PROJECT_DIR$/../Physics/Task2/lastNameHeating/lastNameCharacter_output/lastNameCharacter_restart.xfr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Physics/Task2/script1/script1_output/script1_debug.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Physics/Task2/script1/script1_output/script1_debug.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ProgLangs/labs/assignment-2-dictionary" beforeDir="false" afterPath="$PROJECT_DIR$/../ProgLangs/labs/assignment-2-dictionary" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ProgLangs/labs/assignment-2-dictionary/assignment-1-io-library" beforeDir="false" afterPath="$PROJECT_DIR$/../ProgLangs/labs/assignment-2-dictionary/assignment-1-io-library" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ProgLangs/labs/assignment-2-dictionary/assignment-1-io-library/lib.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../ProgLangs/labs/assignment-2-dictionary/assignment-1-io-library/lib.asm" afterDir="false" />
@@ -13,7 +31,18 @@
       <change beforePath="$PROJECT_DIR$/../ProgLangs/labs/assignment-4-memory-allocator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ProgLangs/labs/assignment-4-memory-allocator/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ProgLangs/labs/assignment-4-memory-allocator/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../ProgLangs/labs/assignment-4-memory-allocator/src/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ProgLangs/labs/assignment-4-memory-allocator/src/out/build/debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../ProgLangs/labs/assignment-4-memory-allocator/src/out/build/debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProgLangs/seminar-8/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ProgLangs/seminar-8/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProgLangs/labs/assignment-5-sepia-filter" beforeDir="false" afterPath="$PROJECT_DIR$/../ProgLangs/labs/assignment-5-sepia-filter" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProgLangs/labs/assignment-5-sepia-filter/run_tester.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab4-back" beforeDir="false" afterPath="$PROJECT_DIR$/lab4-back" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab4-back/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/lab4-back/nginx.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab4-back/src/main/java/org/example/lab4back/auth/PasswordHasher.java" beforeDir="false" afterPath="$PROJECT_DIR$/lab4-back/src/main/java/org/example/lab4back/auth/PasswordHasher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab4-front" beforeDir="false" afterPath="$PROJECT_DIR$/lab4-front" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab4-front/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/lab4-front/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab4-front/src/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lab4-front/src/dashboard/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab4-front/src/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lab4-front/src/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab4-front/src/theme.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lab4-front/src/theme.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,11 +50,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/lab4-front" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2rqo8ZIRRUeaggjmSRw5ZGm9X5p" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -34,8 +63,14 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "disable.download.node.interpreter.editor.notification": "true",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/X240/Desktop/ITMO/Course2/WebProg/web-lab4-front",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -57,6 +92,7 @@
       <option name="presentableId" value="Default" />
       <updated>1737295813525</updated>
       <workItem from="1737295815133" duration="32000" />
+      <workItem from="1741088994534" duration="1941000" />
     </task>
     <servers />
   </component>

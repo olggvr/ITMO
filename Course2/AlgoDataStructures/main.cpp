@@ -1,43 +1,40 @@
 #include <iostream>
-#include <map>
-#include <set>
+#include <queue>
 #include <stack>
-#include <vector>
+#include <map>
 
 using namespace std;
-
-struct Scope{
-    map<string, stack<int>> vars;
-};
-
 void solve() {
-    stack<Scope> scopes;
+    map<string, stack<int>> vars;
+    stack<vector<string>> scopes;
     scopes.emplace();
-    string line;
 
-    while (cin >> line) {
-        if (line.find('{') != string::npos) {
+    string line;
+    while (getline(cin, line)) {
+        if (line == "{") {
             scopes.emplace();
-        } else if (line.find('}') != string::npos) {
+        } else if (line == "}") {
+            for (auto item : scopes.top()) vars[item].pop();
             scopes.pop();
         } else {
             string variable = line.substr(0, line.find('='));
             string value = line.substr(line.find('=') + 1);
             int number;
-            if (!value.empty() && (isdigit(value[0]) || value[0] == '-')) number = stoi(value);
+            if (isdigit(value[0]) || value[0] == '-') number = stoi(value);
             else {
-                map<string, stack<int>> current = scopes.top().vars;
-                if (current.find(value) != current.end() && !current[value].empty()) number = current[value].top();
-                else number = 0;
-                cout << number << '\n';
+                if (!vars.contains(value) || vars[value].empty()) number = 0;
+                else number = vars[value].top();
+                cout << number << endl;
             }
-            scopes.top().vars[variable].push(number);
+            scopes.top().push_back(variable);
+            vars[variable].push(number);
         }
     }
 }
 
-int main(){
-    ios::sync_with_stdio(false); cin.tie(NULL);
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
     int t = 1;
     while (t--) {
         solve();

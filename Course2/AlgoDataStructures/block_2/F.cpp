@@ -7,7 +7,7 @@ bool compare(const std::string& a, const std::string& b){
 }
 
 void solve() {
-    std::vector<std::string> parts;
+    std::vector<std::string> parts;п
     std::string line;
     while (std::cin >> line) {
         parts.push_back(line);

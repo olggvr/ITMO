@@ -49,8 +49,8 @@ cmake_ninja_workdir = C$:/Users/X240/Desktop/ITMO/Course2/AlgoDataStructures/blo
 
 build cmake_object_order_depends_target_block_2: phony || .
 
-build CMakeFiles/block_2.dir/timus_1604.cpp.obj: CXX_COMPILER__block_2_unscanned_Debug C$:/Users/X240/Desktop/ITMO/Course2/AlgoDataStructures/block_2/timus_1604.cpp || cmake_object_order_depends_target_block_2
-  DEP_FILE = CMakeFiles\block_2.dir\timus_1604.cpp.obj.d
+build CMakeFiles/block_2.dir/timus_1444.cpp.obj: CXX_COMPILER__block_2_unscanned_Debug C$:/Users/X240/Desktop/ITMO/Course2/AlgoDataStructures/block_2/timus_1444.cpp || cmake_object_order_depends_target_block_2
+  DEP_FILE = CMakeFiles\block_2.dir\timus_1444.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\block_2.dir
   OBJECT_FILE_DIR = CMakeFiles\block_2.dir
@@ -63,7 +63,7 @@ build CMakeFiles/block_2.dir/timus_1604.cpp.obj: CXX_COMPILER__block_2_unscanned
 #############################################
 # Link the executable block_2.exe
 
-build block_2.exe: CXX_EXECUTABLE_LINKER__block_2_Debug CMakeFiles/block_2.dir/timus_1604.cpp.obj
+build block_2.exe: CXX_EXECUTABLE_LINKER__block_2_Debug CMakeFiles/block_2.dir/timus_1444.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\block_2.dir

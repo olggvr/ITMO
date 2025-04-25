@@ -26,7 +26,7 @@ commit_func "r6" "blue" "br5" true
 
 commit_func "r7" "blue" "br1" false
 
-merge_func "br1" "br2" "blue" "r8"
+merge_func "br2" "br1" "blue" "r8"
 
 commit_func "r9" "blue" "br5" false
 
@@ -38,7 +38,7 @@ commit_func "r12" "red" "br6" false
 
 commit_func "r13" "red" "br7" true
 
-merge_func "br7" "br5" "blue" "r14"
+merge_func "br5" "br7" "blue" "r14"
 
 commit_func "r15" "blue" "br3" false
 
@@ -90,24 +90,24 @@ commit_func "r38" "red" "br6" false
 
 commit_func "r39" "blue" "br3" false
 
-merge_func "br3" "br2" "blue" "r40"
+merge_func "br2" "br3" "blue" "r40"
 
-merge_func "br2" "br8" "blue" "r41"
+merge_func "br8" "br2" "blue" "r41"
 
-merge_func "br8" "br4" "blue" "r42"
+merge_func "br4" "br8" "blue" "r42"
 
 commit_func "r43" "blue" "br9" true
 
 commit_func "r44" "blue" "br4" false
 
-merge_func "br4" "br5" "blue" "r45"
+merge_func "br5" "br4" "blue" "r45"
 
 commit_func "r46" "blue" "br5" false
 
-merge_func "br5" "r0" "red" "r47"
+merge_func "br0" "br5" "red" "r47"
 
 commit_func "r48" "red" "br6" false
 
-merge_func "br6" "br9" "blue" "r49"
+merge_func "br9" "br6" "blue" "r49"
 
-merge_func "br9" "br0" "red" "r50"
+merge_func "br0" "br9" "red" "r50"

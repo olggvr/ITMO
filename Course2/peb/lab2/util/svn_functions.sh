@@ -19,7 +19,7 @@ commit_func(){
   svn switch ^/branches/"${br}"
 
   rm -rf *
-  unzip -o ../../story/commit"${number}".zip -d ./
+  unzip -o ../../commits/commit"${number}".zip -d ./
   svn add --force .
   svn commit --username "${author}" -m "$name"
 }
@@ -34,7 +34,7 @@ merge_func(){
   svn switch "^/branches/${br_to}"
 
   rm -rf *
-  unzip -o ../../story/commit"${number}".zip -d ./
+  unzip -o ../../commits/commit"${number}".zip -d ./
   svn add --force .
   svn commit --username "${author}" -m "$name"
 

@@ -13,29 +13,39 @@ commit_func(){
   local is_new_br=$4
   local archive="../commits/commit${number}.zip"
 
+  git restore .
+  git clean -fd
+
   if [ "$is_new_br" == true ]; then
-    git checkout -b "${br}"
+    if git rev-parse --verify HEAD >/dev/null 2>&1; then
+      git checkout -b "${br}"
+    else
+      git checkout --orphan "${br}"
+    fi
   else
     git checkout "${br}"
   fi
 
-  rm -rf -- * .[!.]* ..?* 2>/dev/null || true
+  git restore .
+  git clean -fd
 
   if [ -s "$archive" ]; then
-    unzip -o "$archive" -d ./
+    unzip -o "$archive" -d ./ >/dev/null
   fi
 
   git add .
 
   if git diff --name-only --diff-filter=U | grep -q .; then
     for file in $(git diff --name-only --diff-filter=U); do
-      git checkout --theirs "$file"
+      git checkout --ours "$file" 2>/dev/null || true
       git add "$file"
     done
   fi
 
   git commit --allow-empty --author="${author} <${author}@bruh.me>" -m "$name"
 }
+
+
 
 merge_func(){
   local br_to=$1
@@ -46,27 +56,26 @@ merge_func(){
   local archive="../commits/commit${number}.zip"
 
   git checkout "${br_to}"
-
-  rm -rf -- * .[!.]* ..?* 2>/dev/null || true
+  git restore .
+  git clean -fd
 
   if [ -s "$archive" ]; then
-    unzip -o "$archive" -d ./
+    unzip -o "$archive" -d ./ >/dev/null
+    git add .
+    git commit --allow-empty --author="${author} <${author}@bruh.me>" -m "pre-merge content for $name"
   fi
-
-  git add .
 
   git merge --no-commit "${br_from}" -m "merged ${br_from} to ${br_to}"
 
   if git diff --name-only --diff-filter=U | grep -q .; then
     for file in $(git diff --name-only --diff-filter=U); do
-      git checkout --theirs "$file"
+      git checkout --ours "$file" 2>/dev/null || true
       git add "$file"
     done
   fi
 
   git commit --allow-empty --author="${author} <${author}@bruh.me>" -m "$name"
 }
-
 
 init_func(){
   git init

@@ -12,7 +12,11 @@ public class CheckHitService implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    private final transient ResultRepository resultRepository = new ResultRepository();
+    private final transient ResultRepository resultRepository;
+
+    public CheckHitService(ResultRepository resultRepository) {
+        this.resultRepository = resultRepository;
+    }
 
     public boolean checkDot(float x, float y, float r) {
         return (x >= 0 && x < r && y >= 0 && y < r/2) ||

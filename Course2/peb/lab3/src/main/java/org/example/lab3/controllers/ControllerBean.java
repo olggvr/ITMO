@@ -3,6 +3,7 @@ package org.example.lab3.controllers;
 import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
+import org.example.lab3.repository.ResultRepository;
 import org.example.lab3.service.CheckHitService;
 import org.example.lab3.entity.Result;
 
@@ -17,7 +18,7 @@ public class ControllerBean implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
-    private final transient CheckHitService checkHitService = new CheckHitService();
+    private final transient CheckHitService checkHitService = new CheckHitService(new ResultRepository());
 
     private float x;
     private float y;

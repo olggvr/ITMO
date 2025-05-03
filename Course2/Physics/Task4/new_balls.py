@@ -69,15 +69,15 @@ def handle_collision(projectile, target):
 
     return True
 
-projectile = MovingCircle(100, HEIGHT // 2, radius=40, mass=10, vel_x=5, vel_y=0, color=PROJECTILE_COLOR)
+projectile = MovingCircle(100, HEIGHT // 2, radius=30, mass=10, vel_x=5, vel_y=0, color=PROJECTILE_COLOR)
 
 targets = [
-    MovingCircle(400, 250, radius=40, mass=1000, color=TARGET_COLOR),
-    MovingCircle(600, 350, radius=40, mass=1000, color=TARGET_COLOR),
-    MovingCircle(700, 150, radius=40, mass=1000, color=TARGET_COLOR),
-    MovingCircle(300, 250, radius=40, mass=1000, color=TARGET_COLOR),
-    MovingCircle(200, 350, radius=40, mass=1000, color=TARGET_COLOR),
-    MovingCircle(100, 150, radius=40, mass=1000, color=TARGET_COLOR)
+    MovingCircle(750, 550, radius=20, mass=1000, color=TARGET_COLOR),
+    MovingCircle(500, 450, radius=20, mass=1000, color=TARGET_COLOR),
+    MovingCircle(750, 350, radius=20, mass=1000, color=TARGET_COLOR),
+    MovingCircle(500, 250, radius=20, mass=1000, color=TARGET_COLOR),
+    MovingCircle(750, 150, radius=20, mass=1000, color=TARGET_COLOR),
+    MovingCircle(500, 50, radius=20, mass=1000, color=TARGET_COLOR)
 ]
 
 clock = pygame.time.Clock()

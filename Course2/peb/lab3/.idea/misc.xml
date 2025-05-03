@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="EntryPointsManager">
+    <entry_points version="2.0">
+      <entry_point TYPE="field" FQNAME="org.example.lab3.controllers.ControllerBean r" />
+      <entry_point TYPE="field" FQNAME="org.example.lab3.controllers.ControllerBean x" />
+      <entry_point TYPE="field" FQNAME="org.example.lab3.controllers.ControllerBean y" />
+    </entry_points>
+    <pattern value="org.example.lab3.controllers.ControllerBean" method="clearResults" />
+    <pattern value="org.example.lab3.controllers.ControllerBean" method="completeRequest" />
+    <pattern value="org.example.lab3.controllers.ControllerBean" method="getResultList" />
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectResources">
+    <resource url="http://xmlns.jcp.org/jsf/html" location="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

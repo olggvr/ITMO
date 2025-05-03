@@ -11,7 +11,7 @@ repositories {
 }
 
 ext {
-    junitVersion = '5.11.0-M2'
+    junitVersion = '5.10.2'
 }
 
 war {
@@ -32,4 +32,11 @@ dependencies {
 
     implementation 'org.hibernate.orm:hibernate-core:6.6.1.Final'
     implementation 'org.postgresql:postgresql:42.7.4'
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+}
+
+test {
+    useJUnitPlatform()
 }

@@ -100,3 +100,30 @@ tasks.register('doc', Jar) {
         }
     }
 }
+
+def loadJvmArgsFromFile(String path) {
+    def file = file(path)
+    if (!file.exists()) {
+        throw new GradleException("not found: $path")
+    }
+    return file.readLines()
+            .collect { it.trim() }
+            .findAll { it && !it.startsWith('#') }
+}
+
+tasks.register('env', JavaExec) {
+    group = 'Execution'
+    description = 'Build & run in alternative environment'
+
+    def profile = project.findProperty("profile") ?: "dev"
+    def optionsFile = "env/${profile}.vmoptions"
+    def jvmArgsList = loadJvmArgsFromFile(optionsFile)
+
+    classpath = sourceSets.main.runtimeClasspath
+    jvmArgs = jvmArgsList
+
+    doFirst {
+        println "Запуск с окружением: $profile"
+        println "JVM args: $jvmArgsList"
+    }
+}

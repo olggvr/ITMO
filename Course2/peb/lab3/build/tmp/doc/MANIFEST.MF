@@ -1,2 +1,14 @@
 Manifest-Version: 1.0
+MD5-HibernateSessionFactory: d17645d8f11ed15df09be841578ac186
+SHA1-HibernateSessionFactory: 103d17832312e505c19510154b0340f7fe36e721
+MD5-ControllerBean: 4a6bc2041c916af676c4ff1d4748d234
+SHA1-ControllerBean: 01a3e5cf8b6723df22c5d4f1403afd017e06a199
+MD5-Result: fc970245d114d86b7699a0dd742c2945
+SHA1-Result: 786c581babd29b58c0eb8b5fe880d9423f8c56b3
+MD5-ResultRepository: 7b0c516fb62998bb37ea0e12e8408da5
+SHA1-ResultRepository: b665fe4224339301e053dec32619707450a31c82
+MD5-CheckHitService: e7a0725ec8bb297761aacf69845945ec
+SHA1-CheckHitService: ef85e75246daf8d5bf00c8c8a4a900f491ea47cc
+MD5-DotCheckerTest: 964cd75d8d29f78cbeb24f6ae54e90f1
+SHA1-DotCheckerTest: 436f2913c5b35346866a66a99a1d81875a2bb5cd
 

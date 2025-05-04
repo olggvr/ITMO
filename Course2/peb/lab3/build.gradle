@@ -1,3 +1,17 @@
+import java.security.MessageDigest
+
+def static hash(File file, String algorithm) {
+    MessageDigest md = MessageDigest.getInstance(algorithm)
+    file.withInputStream { is ->
+        byte[] buffer = new byte[8192]
+        int bytesRead
+        while ((bytesRead = is.read(buffer)) != -1) {
+            md.update(buffer, 0, bytesRead)
+        }
+    }
+    return md.digest().encodeHex().toString()
+}
+
 plugins {
     id 'java'
     id 'war'
@@ -60,9 +74,29 @@ javadoc {
 
 tasks.register('doc', Jar) {
     group = 'Documentation'
-    description = 'Packing javadoc archive'
+    description = 'Packing Javadoc archive with MD5/SHA-1 hashes in MANIFEST.MF'
 
     dependsOn javadoc
 
     archiveClassifier.set('javadoc')
+    from("docs/javadoc")
+
+    manifest {
+        attributes(['Manifest-Version': '1.0'])
+
+        def classDir = layout.buildDirectory.dir("classes/java/main").get().asFile
+        def filesToHash = fileTree('src').include('**/*.java', '**/*.jsp') +
+                fileTree(classDir).matching { include '**/*.class' }
+
+        filesToHash.each { file ->
+            def base = file.name.replaceAll(/\.(java|class|jsp)/, '')
+            def md5Key = "MD5-${base}".toString()
+            def sha1Key = "SHA1-${base}".toString()
+
+            if (md5Key.length() <= 60 && sha1Key.length() <= 60) {
+                attributes.put(md5Key, hash(file, 'MD5'))
+                attributes.put(sha1Key, hash(file, 'SHA-1'))
+            }
+        }
+    }
 }

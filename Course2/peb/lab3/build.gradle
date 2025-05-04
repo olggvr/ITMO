@@ -39,6 +39,7 @@ dependencies {
 
 }
 
+//
 test {
     useJUnitPlatform()
 }
@@ -50,65 +51,18 @@ tasks.register("testAfterBuild") {
     finalizedBy("test")
 }
 
-import java.security.MessageDigest
-
-// hashing
-        def hash(File file, String algorithm) {
-    MessageDigest md = MessageDigest.getInstance(algorithm)
-    file.eachByte(1024) { buffer, bytesRead ->
-        md.update(buffer, 0, bytesRead)
-    }
-    return md.digest().encodeHex().toString()
-}
-
-// javadoc task
-tasks.register("generateJavadoc", Javadoc) {
-    group = "documentation"
-    description = "javadoc generation"
-
-    destinationDir = file("$buildDir/docs/javadoc")
+// doc task
+javadoc {
     source = sourceSets.main.allJava
-    classpath = sourceSets.main.compileClasspath
+    destinationDir = layout.buildDirectory.dir("docs/javadoc").get().asFile
+    options.encoding = 'UTF-8'
 }
 
-// manifest generation
-tasks.register("generateManifest") {
-    group = "documentation"
-    description = "creating MANIFEST with MD5 & SHA-1"
+tasks.register('doc', Jar) {
+    group = 'Documentation'
+    description = 'Packing javadoc archive'
 
-    outputs.file("$buildDir/docs/MANIFEST.MF")
+    dependsOn javadoc
 
-    doLast {
-        def manifestFile = file("$buildDir/docs/MANIFEST.MF")
-        manifestFile.text = ""
-
-        fileTree(dir: "$buildDir/classes/java/main", include: '**/*.class').each { File file ->
-        def md5 = hash(file, "MD5")
-        def sha1 = hash(file, "SHA-1")
-
-        manifestFile << "${file.name}:\n"
-        manifestFile << "  MD5: ${md5}\n"
-        manifestFile << "  SHA-1: ${sha1}\n\n"
-    }
-    }
-
-}
-
-// unite in one task
-tasks.register("doc", Zip) {
-    group = "documentation"
-    description = "archive Javadoc & MANIFEST"
-
-    dependsOn("generateJavadoc", "generateManifest")
-
-    from("$buildDir/docs/javadoc") {
-        into("javadoc")
-    }
-
-    from("$buildDir/docs/MANIFEST.MF") {
-        into("")
-    }
-
-    archiveFileName = "project-docs.zip"
-    destinationDirectory = file("$buildDir/distributions")
+    archiveClassifier.set('javadoc')
 }

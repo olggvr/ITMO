@@ -19,6 +19,10 @@ public class ResultRepository {
         entityManagerFactory = Persistence.createEntityManagerFactory("default");
     }
 
+    /**
+     * Receives result param and saves it in db using transaction
+     * @param result - Result object, fields - x, y, r, isInside(boolean)
+     */
     public void save(Result result) {
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();

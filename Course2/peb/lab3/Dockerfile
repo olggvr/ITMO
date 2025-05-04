@@ -1,7 +1,7 @@
 FROM gradle:8.10-jdk17 AS build
 COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
-RUN gradle test war --no-daemon
+RUN gradle doc test war --no-daemon
 
 FROM bitnami/wildfly:latest
 EXPOSE 8080

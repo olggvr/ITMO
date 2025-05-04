@@ -1,0 +1,5 @@
+org.example.lab3.configs
+org.example.lab3.controllers
+org.example.lab3.entity
+org.example.lab3.repository
+org.example.lab3.service

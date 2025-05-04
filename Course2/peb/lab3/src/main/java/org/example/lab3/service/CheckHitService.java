@@ -1,5 +1,7 @@
 package org.example.lab3.service;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import org.example.lab3.entity.Result;
 import org.example.lab3.repository.ResultRepository;
 
@@ -7,6 +9,7 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
+@ApplicationScoped
 public class CheckHitService implements Serializable {
 
     @Serial
@@ -14,10 +17,18 @@ public class CheckHitService implements Serializable {
 
     private final transient ResultRepository resultRepository;
 
+    @Inject
     public CheckHitService(ResultRepository resultRepository) {
         this.resultRepository = resultRepository;
     }
 
+    /**
+     *
+     * @param x coordinate
+     * @param y coordinate
+     * @param r - param, sets scale of available areas
+     * @return True - dot placed inside given area, False - dot placed outside given area
+     */
     public boolean checkDot(float x, float y, float r) {
         return (x >= 0 && x < r && y >= 0 && y < r/2) ||
                 (x >= 0 && y <= 0 && (x - y) < r/2) ||

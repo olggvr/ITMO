@@ -1,6 +1,6 @@
 package org.example.lab3;
 
-import org.example.lab3.repository.ResultRepository;
+import org.example.lab3.repository.ResultRepositoryImpl;
 import org.example.lab3.service.CheckHitService;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +9,7 @@ import static org.mockito.Mockito.mock;
 
 public class DotCheckerTest {
 
-    ResultRepository mockRepo = mock(ResultRepository.class);
+    ResultRepositoryImpl mockRepo = mock(ResultRepositoryImpl.class);
     CheckHitService service = new CheckHitService(mockRepo);
 
     @Test

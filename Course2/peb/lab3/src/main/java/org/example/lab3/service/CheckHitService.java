@@ -3,7 +3,7 @@ package org.example.lab3.service;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.example.lab3.entity.Result;
-import org.example.lab3.repository.ResultRepository;
+import org.example.lab3.repository.ResultRepositoryImpl;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -15,11 +15,11 @@ public class CheckHitService implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    private final transient ResultRepository resultRepository;
+    private final transient ResultRepositoryImpl resultRepositoryImpl;
 
     @Inject
-    public CheckHitService(ResultRepository resultRepository) {
-        this.resultRepository = resultRepository;
+    public CheckHitService(ResultRepositoryImpl resultRepositoryImpl) {
+        this.resultRepositoryImpl = resultRepositoryImpl;
     }
 
     /**
@@ -36,16 +36,16 @@ public class CheckHitService implements Serializable {
     }
 
     public void saveResult(Result result) {
-        resultRepository.save(result);
+        resultRepositoryImpl.save(result);
     }
 
     public List<Result> findAllResults() {
-        return resultRepository.findAll();
+        return resultRepositoryImpl.findAll();
     }
 
     public void clearAllResults() {
-        ResultRepository resultRepository = new ResultRepository();
-        resultRepository.clean();
+        ResultRepositoryImpl resultRepositoryImpl = new ResultRepositoryImpl();
+        resultRepositoryImpl.clean();
     }
 
 }

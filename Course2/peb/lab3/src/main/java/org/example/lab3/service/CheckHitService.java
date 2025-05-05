@@ -29,7 +29,7 @@ public class CheckHitService implements Serializable {
      * @param r - param, sets scale of available areas
      * @return True - dot placed inside given area, False - dot placed outside given area
      */
-    public boolean checkDot(float x, float y, float r) {
+    public static boolean checkDot(float x, float y, float r) {
         return (x >= 0 && x < r && y >= 0 && y < r/2) ||
                 (x >= 0 && y <= 0 && (x - y) < r/2) ||
                 (x <= 0 && y >= 0 && x * x + y * y <= r * r);

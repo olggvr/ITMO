@@ -1,6 +1,0 @@
--Xms512m
--Xmx1024m
--XX:+UseG1GC
--Dspring.profiles.active=prod
--Dlog.level=ERROR
---add-opens java.base/java.lang=ALL-UNNAMED

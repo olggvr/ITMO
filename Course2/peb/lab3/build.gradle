@@ -101,29 +101,51 @@ tasks.register('doc', Jar) {
     }
 }
 
-def loadJvmArgsFromFile(String path) {
+def loadEnvFile(String path) {
     def file = file(path)
-    if (!file.exists()) {
-        throw new GradleException("not found: $path")
-    }
+    if (!file.exists()) throw new GradleException("Env file not found: $path")
+
     return file.readLines()
             .collect { it.trim() }
             .findAll { it && !it.startsWith('#') }
+            .collectEntries { line ->
+                def (k, v) = line.split('=', 2)
+                [(k): v]
+            }
 }
 
 tasks.register('env', JavaExec) {
     group = 'Execution'
-    description = 'Build & run in alternative environment'
+    description = 'Run application with environment-specific JVM settings'
 
     def profile = project.findProperty("profile") ?: "dev"
-    def optionsFile = "env/${profile}.vmoptions"
-    def jvmArgsList = loadJvmArgsFromFile(optionsFile)
+    def envPath = "env/${profile}.env"
+    def envVars = loadEnvFile(envPath)
 
     classpath = sourceSets.main.runtimeClasspath
-    jvmArgs = jvmArgsList
+    jvmArgs = []
+
+    if (envVars["XMS"]) jvmArgs += "-Xms${envVars["XMS"]}"
+    if (envVars["XMX"]) jvmArgs += "-Xmx${envVars["XMX"]}"
+    if (envVars["CONFIG_ENV"]) jvmArgs += "-Dconfig.env=${envVars["CONFIG_ENV"]}"
+    if (envVars["ADD_OPENS"]) jvmArgs += "--add-opens=${envVars["ADD_OPENS"]}"
+
+    def javaVersionStr = envVars.get("JAVA_VERSION")
+    def javaVersion = 17
+
+    if (javaVersionStr != null && javaVersionStr.isInteger()) {
+        javaVersion = javaVersionStr.toInteger()
+    } else if (javaVersionStr != null) {
+        throw new GradleException("JAVA_VERSION must be an integer. Found: '${javaVersionStr}'")
+    }
+
+    javaLauncher = javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(javaVersion)
+    }
 
     doFirst {
-        println "Запуск с окружением: $profile"
-        println "JVM args: $jvmArgsList"
+        println "Run: $profile"
+        println "Java version: $javaVersion"
+        println "JVM args: $jvmArgs"
     }
 }

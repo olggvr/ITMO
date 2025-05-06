@@ -1,13 +1,12 @@
 import pygame
 import sys
 import math
-import random
 
 pygame.init()
 
 WIDTH, HEIGHT = 800, 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Статические мячи")
+pygame.display.set_caption("Снаряд с импульсом и цели")
 
 BG_COLOR = (255, 255, 255)
 PROJECTILE_COLOR = (255, 50, 50)
@@ -42,42 +41,42 @@ class MovingCircle:
     def render(self, surface):
         pygame.draw.circle(surface, self.color, (int(self.pos.x), int(self.pos.y)), self.radius)
 
-def handle_collision(projectile, target):
-    delta = target.pos - projectile.pos
+def handle_collision(a: MovingCircle, b: MovingCircle):
+    delta = b.pos - a.pos
     dist = delta.length()
-    if dist == 0 or dist > projectile.radius + target.radius:
-        return False  # Столкновения нет
-
-    normal = delta.normalize()
-    relative_velocity = projectile.vel
-    speed_along_normal = relative_velocity.dot(normal)
-    if speed_along_normal <= 0:
+    if dist == 0 or dist > a.radius + b.radius:
         return False
 
-    projectile.vel -= 2 * speed_along_normal * normal
+    normal = delta.normalize()
+    rel_vel = b.vel - a.vel
+    speed = rel_vel.dot(normal)
 
-    def randomize_angle(vel, max_degrees=10):
-        angle = math.atan2(vel.y, vel.x)
-        angle += math.radians(random.uniform(-max_degrees, max_degrees))
-        speed = vel.length()
-        return pygame.math.Vector2(math.cos(angle), math.sin(angle)) * speed
+    if speed >= 0:
+        return False  # Уже расходятся
 
-    projectile.vel = randomize_angle(projectile.vel)
+    # Упругое столкновение с сохранением импульса
+    impulse = (2 * speed) / (a.mass + b.mass)
+    a.vel += impulse * b.mass * normal
+    b.vel -= impulse * a.mass * normal
 
-    angle_deg = math.degrees(math.atan2(projectile.vel.y, projectile.vel.x))
-    print(f"После столкновения: скорость = ({projectile.vel.x:.2f}, {projectile.vel.y:.2f}), угол = {angle_deg:.1f}°")
+    # Избегаем залипания
+    overlap = a.radius + b.radius - dist
+    a.pos -= normal * (overlap * b.mass / (a.mass + b.mass))
+    b.pos += normal * (overlap * a.mass / (a.mass + b.mass))
 
     return True
 
-projectile = MovingCircle(100, HEIGHT // 2, radius=30, mass=10, vel_x=5, vel_y=0, color=PROJECTILE_COLOR)
+# Тяжёлый снаряд
+projectile = MovingCircle(100, HEIGHT // 2, radius=35, mass=1, vel_x=5, vel_y=0, color=PROJECTILE_COLOR)
 
+# Лёгкие цели
 targets = [
-    MovingCircle(750, 550, radius=20, mass=1000, color=TARGET_COLOR),
-    MovingCircle(500, 450, radius=20, mass=1000, color=TARGET_COLOR),
-    MovingCircle(750, 350, radius=20, mass=1000, color=TARGET_COLOR),
-    MovingCircle(500, 250, radius=20, mass=1000, color=TARGET_COLOR),
-    MovingCircle(750, 150, radius=20, mass=1000, color=TARGET_COLOR),
-    MovingCircle(500, 50, radius=20, mass=1000, color=TARGET_COLOR)
+    MovingCircle(500, 300, radius=20, mass=10, color=TARGET_COLOR),
+    MovingCircle(700, 450, radius=20, mass=10, color=TARGET_COLOR),
+    MovingCircle(750, 450, radius=20, mass=10, color=TARGET_COLOR),
+    MovingCircle(700, 250, radius=20, mass=10, color=TARGET_COLOR),
+    MovingCircle(750, 150, radius=20, mass=10, color=TARGET_COLOR),
+    MovingCircle(700, 50, radius=20, mass=10, color=TARGET_COLOR)
 ]
 
 clock = pygame.time.Clock()
@@ -97,10 +96,13 @@ while running:
 
     projectile.update_position()
 
-    for target in targets[:]:
-        if handle_collision(projectile, target):
-            targets.remove(target)
-            break
+    # Удаляем цели, которые были задеты
+    new_targets = []
+    for target in targets:
+        if not handle_collision(projectile, target):
+            target.update_position()
+            new_targets.append(target)
+    targets = new_targets
 
     update_screen()
     clock.tick(60)

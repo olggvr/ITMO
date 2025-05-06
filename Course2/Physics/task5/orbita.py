@@ -1,26 +1,29 @@
-import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib.animation import FuncAnimation
+from matplotlib.animation import FuncAnimation  # исправлено
+import matplotlib
+matplotlib.use('TkAgg')
+
+import matplotlib.pyplot as plt
 
 g = 6.67430e-11
 m_sun = 1.9885e30  # масса солнца, кг
 au = 1.495978707e11  # астрономическая единица, м
 
 # уран
-a = 19.19126393 * au  # большая полуось
-e = 0.04716771  # эксцентриситет
-rp = a * (1 - e)  # перигелий
+a = 19.19126393 * au
+e = 0.04716771
+rp = a * (1 - e)
 
 # скорость в перигелии
 multiplier = 1.0
 vp = multiplier * np.sqrt(g * m_sun * (1 + e) / (a * (1 - e)))
 
-pos = np.array([rp, 0.0])  # уран в перигелии на оси x
-vel = np.array([0.0, vp])  # скорость вдоль +y
+pos = np.array([rp, 0.0])
+vel = np.array([0.0, vp])
 
 hour_step = 6
-dt = hour_step * 3600  # шаг
-sim_speed = 5000  # ускорение времени
+dt = hour_step * 3600
+sim_speed = 5000
 period_est = 0.0
 first_pass = True
 prev_r = np.linalg.norm(pos)
@@ -35,8 +38,8 @@ ax.set_xlim(-22, 22)
 ax.set_ylim(-22, 22)
 ax.set_xlabel("x (au)")
 ax.set_ylabel("y (au)")
-text_time = ax.text(0.02, 0.95, "", transform=ax.transaxes)
-text_period = ax.text(0.02, 0.90, "", transform=ax.transaxes)
+text_time = ax.text(0.02, 0.95, "", transform=ax.transAxes)
+text_period = ax.text(0.02, 0.90, "", transform=ax.transAxes)
 
 xs, ys = [], []
 
@@ -45,8 +48,8 @@ def update(frame):
     global pos, vel, prev_r, period_est, first_pass
 
     for _ in range(sim_speed):
-        r = np.linalg.norm(pos)  # расстояние до солнца
-        acc = -g * m_sun / r**3 * pos  # текущее ускорение
+        r = np.linalg.norm(pos)
+        acc = -g * m_sun / r**3 * pos
         pos_n = pos + vel * dt
         r_n = np.linalg.norm(pos_n)
         acc_n = -g * m_sun / r_n**3 * pos_n
@@ -56,13 +59,10 @@ def update(frame):
         if prev_r > r and r_n > r:
             if first_pass:
                 first_pass = False
-
                 period_est = 0.0
             else:
-                print(f"период из симуляции: {period_est/365.25/24/3600:.3f} лет")
-                ax.set_title("полный оборот ✔️", color="tab:green")
-                # anim.event_source.stop()
-                # break
+                print(f"Период из симуляции: {period_est/365.25/24/3600:.3f} лет")
+                ax.set_title("Полный оборот ✔️", color="tab:green")
             period_est = 0.0
         prev_r = r
         period_est += dt
@@ -79,5 +79,5 @@ def update(frame):
     return traj, pt, text_time, text_period
 
 
-anim = funcanimation(fig, update, frames=20000000, interval=20, blit=False)
+anim = FuncAnimation(fig, update, frames=20000000, interval=20, blit=False)
 plt.show()

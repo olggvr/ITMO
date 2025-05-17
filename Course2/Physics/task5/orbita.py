@@ -1,83 +1,67 @@
 import numpy as np
-from matplotlib.animation import FuncAnimation  # исправлено
+import matplotlib.pyplot as plt
 import matplotlib
+from matplotlib.animation import FuncAnimation
+
 matplotlib.use('TkAgg')
 
-import matplotlib.pyplot as plt
+# Гравитационная постоянная
+G = 6.67430e-11
 
-g = 6.67430e-11
-m_sun = 1.9885e30  # масса солнца, кг
-au = 1.495978707e11  # астрономическая единица, м
+# Массы
+M_sun = 1.989e30
+M_earth = 5.972e24
 
-# уран
-a = 19.19126393 * au
-e = 0.04716771
-rp = a * (1 - e)
+# Начальные условия
+r0_earth = np.array([1.496e11, 0])
+v0_earth = np.array([0, 29.78e3])
 
-# скорость в перигелии
-multiplier = 1.0
-vp = multiplier * np.sqrt(g * m_sun * (1 + e) / (a * (1 - e)))
+# Временные параметры
+dt = 60 * 60 * 6  # 6 часов
+T = 3 * 365.25 * 24 * 3600  # 3 года (для ускорения анимации)
+N = int(T / dt)
 
-pos = np.array([rp, 0.0])
-vel = np.array([0.0, vp])
+positions_earth = np.zeros((N, 2))
+velocities_earth = np.zeros((N, 2))
 
-hour_step = 6
-dt = hour_step * 3600
-sim_speed = 5000
-period_est = 0.0
-first_pass = True
-prev_r = np.linalg.norm(pos)
+positions_earth[0] = r0_earth
+velocities_earth[0] = v0_earth
 
-fig, ax = plt.subplots(figsize=(6, 6))
-(traj,) = ax.plot([], [], lw=1)
-(pt,) = ax.plot([], [], "o", markersize=4)
-(sun,) = ax.plot(0, 0, "o", ms=10)
+# Метод Эйлера
+for i in range(1, N):
+    r = positions_earth[i - 1]
+    v = velocities_earth[i - 1]
+    distance = np.linalg.norm(r)
+    force = -G * M_sun * r / distance ** 3
+    a = force
+    velocities_earth[i] = v + a * dt
+    positions_earth[i] = r + velocities_earth[i] * dt
 
-ax.set_aspect("equal")
-ax.set_xlim(-22, 22)
-ax.set_ylim(-22, 22)
-ax.set_xlabel("x (au)")
-ax.set_ylabel("y (au)")
-text_time = ax.text(0.02, 0.95, "", transform=ax.transAxes)
-text_period = ax.text(0.02, 0.90, "", transform=ax.transAxes)
+# --- Анимация ---
+fig, ax = plt.subplots(figsize=(8, 8))
+ax.set_xlim(-1.6e11, 1.6e11)
+ax.set_ylim(-1.6e11, 1.6e11)
+ax.set_aspect('equal')
+ax.set_xlabel('x (м)')
+ax.set_ylabel('y (м)')
+ax.set_title('Анимация движения Земли вокруг Солнца')
+ax.grid(True)
 
-xs, ys = [], []
+sun = plt.plot(0, 0, 'yo', label='Солнце')[0]
+earth, = plt.plot([], [], 'bo', label='Земля')
+trace, = plt.plot([], [], 'b--', linewidth=0.5)
 
+def init():
+    earth.set_data([], [])
+    trace.set_data([], [])
+    return earth, trace
 
 def update(frame):
-    global pos, vel, prev_r, period_est, first_pass
-
-    for _ in range(sim_speed):
-        r = np.linalg.norm(pos)
-        acc = -g * m_sun / r**3 * pos
-        pos_n = pos + vel * dt
-        r_n = np.linalg.norm(pos_n)
-        acc_n = -g * m_sun / r_n**3 * pos_n
-        vel += acc_n * dt
-        pos = pos_n
-
-        if prev_r > r and r_n > r:
-            if first_pass:
-                first_pass = False
-                period_est = 0.0
-            else:
-                print(f"Период из симуляции: {period_est/365.25/24/3600:.3f} лет")
-                ax.set_title("Полный оборот ✔️", color="tab:green")
-            period_est = 0.0
-        prev_r = r
-        period_est += dt
-
-    xs.append(pos[0] / au)
-    ys.append(pos[1] / au)
-    traj.set_data(xs, ys)
-    pt.set_data([pos[0] / au], [pos[1] / au])
-
-    sim_days = len(xs) * dt * sim_speed / 86400
-    text_time.set_text(f"t = {sim_days/365.25:6.2f} yr")
-    if not first_pass:
-        text_period.set_text(f"period = {period_est/365.25/24/3600:6.2f} yr")
-    return traj, pt, text_time, text_period
+    earth.set_data([positions_earth[frame, 0]], [positions_earth[frame, 1]])
+    trace.set_data(positions_earth[:frame, 0], positions_earth[:frame, 1])
+    return earth, trace
 
 
-anim = FuncAnimation(fig, update, frames=20000000, interval=20, blit=False)
+anim = FuncAnimation(fig, update, frames=N, init_func=init, blit=True, interval=1)
+plt.legend()
 plt.show()

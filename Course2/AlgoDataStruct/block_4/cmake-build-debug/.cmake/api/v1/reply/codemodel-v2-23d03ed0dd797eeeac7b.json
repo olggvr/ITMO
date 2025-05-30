@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/X240/Desktop/ITMO/Course2/AlgoDataStructures/block_4/cmake-build-debug",
-		"source" : "C:/Users/X240/Desktop/ITMO/Course2/AlgoDataStructures/block_4"
+		"build" : "C:/Users/X240/Desktop/ITMO/Course2/AlgoDataStruct/block_4/cmake-build-debug",
+		"source" : "C:/Users/X240/Desktop/ITMO/Course2/AlgoDataStruct/block_4"
 	},
 	"version" : 
 	{

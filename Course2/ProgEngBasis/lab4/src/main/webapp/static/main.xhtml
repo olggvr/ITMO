@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <title>Lab3</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="style/style.css" type="text/css"/>
+    <script src="script/main.js" type="text/javascript" defer="defer"></script>
+</h:head>
+<h:body>
+    <header>Гаврилин Олег Сергеевич, P3230, 408409</header>
+    <table>
+        <tr>
+            <td id="coordinate-plate">
+                <h:form id="plate-with-dots">
+                    <div id="points-data" style="visibility: hidden">
+                        <ui:repeat value="#{controllerBean.getResultList()}" var="dot">
+                            <span class="point" data-x="#{dot.x}" data-y="#{dot.y}" data-result="#{dot.result}"/>
+                        </ui:repeat>
+                    </div>
+                </h:form>
+                <svg width="500" height="500" xmlns="http://www.w3.org/2000/svg" id="plate">
+                    <line id="axis-x" x1="50" y1="250" x2="450" y2="250" stroke="silver" stroke-width="2"/>
+                    <line id="axis-y" x1="250" y1="50" x2="250" y2="450" stroke="silver" stroke-width="2"/>
+                    <polygon id="arrow-x" points="450,245 450,255 460,250" fill="silver"/>
+                    <polygon id="arrow-y" points="245,50 255,50 250,40" fill="silver"/>
+
+                    <rect id="rect" x="250" y="200" width="100" height="50" fill="white"/>
+                    <path id="arc" d="M 200 250 A 50 50 0 0 1 250 200 L 250 250 Z" fill="white"/>
+                    <polygon id="triangle" points="250,250 250,350 350,250" fill="white"/>
+
+                    <text x="260" y="50" id="text-y" fill="white">Y</text>
+                    <text x="450" y="240" id="text-x" fill="white">X</text>
+                    <line id="mark-neg-rx" x1="150" y1="245" x2="150" y2="255" stroke="silver" stroke-width="2"/>
+                    <line id="mark-rx" x1="350" y1="245" x2="350" y2="255" stroke="silver" stroke-width="2"/>
+                    <line id="mark-ry" x1="245" y1="150" x2="255" y2="150" stroke="silver" stroke-width="2"/>
+                    <line id="mark-neg-ry" x1="245" y1="350" x2="255" y2="350" stroke="silver" stroke-width="2"/>
+                    <text x="130" y="245" id="label-neg-rx" class="small" fill="white">-R</text>
+                    <text x="353" y="245" id="label-rx" class="small" fill="white">R</text>
+                    <text x="260" y="360" id="label-neg-ry" class="small" fill="white">-R</text>
+                    <text x="260" y="154" id="label-ry" class="small" fill="white">R</text>
+                </svg>
+            </td>
+            <td id="input">
+                <div id="error" hidden="hidden">Error div</div>
+                <h:form id="data-form">
+                    <h:panelGrid columns="1" id="legend-x">
+                        <h:outputLabel for="x" value="Выберите X (от -2 до 1):"/>
+                        <h:selectOneMenu id="x" value="#{controllerBean.x}" required="true">
+                            <f:selectItem itemValue="-2" itemLabel="-2"/>
+                            <f:selectItem itemValue="-1.5" itemLabel="-1.5"/>
+                            <f:selectItem itemValue="-1" itemLabel="-1"/>
+                            <f:selectItem itemValue="-0.5" itemLabel="-0.5"/>
+                            <f:selectItem itemValue="0" itemLabel="0"/>
+                            <f:selectItem itemValue="0.5" itemLabel="0.5"/>
+                            <f:selectItem itemValue="1" itemLabel="1"/>
+                        </h:selectOneMenu>
+                    </h:panelGrid>
+                    <h:panelGrid columns="1" id="legend-y">
+                        <h:outputLabel for="y" value="Введите Y (от -3 до 5):"/>
+                        <h:inputText id="y" value="#{controllerBean.y}" required="true">
+                            <f:validateDoubleRange minimum="-3" maximum="5"/>
+                        </h:inputText>
+                    </h:panelGrid>
+                    <h:panelGrid columns="1" id="legend-r">
+                        <h:panelGroup>
+                            <h:outputLabel for="rSelect" value="Выберите радиус R:"/>
+                            <h:selectOneRadio id="rSelect" value="#{controllerBean.r}" required="true">
+                                <f:selectItem itemValue="1" itemLabel="1"/>
+                                <f:selectItem itemValue="2" itemLabel="2"/>
+                                <f:selectItem itemValue="3" itemLabel="3"/>
+                                <f:selectItem itemValue="4" itemLabel="4"/>
+                                <f:selectItem itemValue="5" itemLabel="5"/>
+                            </h:selectOneRadio>
+                        </h:panelGroup>
+                    </h:panelGrid>
+                    <h:commandButton id="submit" value="Проверить" action="#{controllerBean.completeRequest()}" onclick="return validateAndSubmitForm();">
+                        <f:ajax execute="@form" render="result-form plate-with-dots"/>
+                    </h:commandButton>
+                </h:form>
+            </td>
+            <td id="result">
+                <h:form id="result-form">
+                    <table id="result-table">
+                        <tr>
+                            <th>X</th>
+                            <th>Y</th>
+                            <th>R</th>
+                            <th>Result</th>
+                        </tr>
+                        <ui:repeat value="#{controllerBean.getResultList()}" var="result">
+                            <tr>
+                                <td><h:outputText value="#{result.x}"/></td>
+                                <td><h:outputText value="#{result.y}"/></td>
+                                <td><h:outputText value="#{result.r}"/></td>
+                                <td><h:outputText value="#{result.result}"/></td>
+                            </tr>
+                        </ui:repeat>
+                    </table>
+                </h:form>
+            </td>
+        </tr>
+    </table>
+    <div id="message-container" style="color: red;"></div>
+    <h:form>
+        <h:commandButton value="Начальная страница" action="welcome"/>
+        <h:commandButton value="Очистить результаты" action="#{controllerBean.clearResults}" />
+    </h:form>
+</h:body>
+</html>

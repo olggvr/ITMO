@@ -2,9 +2,7 @@ package org.example.lab3.controllers;
 
 import jakarta.annotation.ManagedBean;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import org.example.lab3.mbeans.ConfigBean;
 import org.example.lab3.service.CheckHitService;
 import org.example.lab3.entity.Result;
 
@@ -20,9 +18,6 @@ public class ControllerBean implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
     private final transient CheckHitService checkHitService = new CheckHitService();
-
-    @Inject
-    private ConfigBean configBean;
 
     private float x;
     private float y;
@@ -56,9 +51,6 @@ public class ControllerBean implements Serializable {
         boolean isHit = checkHitService.checkDot(x, y, r);
         Result result = new Result(x, y, r, isHit);
         checkHitService.saveResult(result);
-
-        // call MBean method
-        configBean.getPointsCounter().addPoint(isHit);
     }
 
     public void clearResults() {checkHitService.clearAllResults();}

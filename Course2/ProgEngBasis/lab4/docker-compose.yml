@@ -5,9 +5,11 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
+      - "9010:9010"
     environment:
       - WILDFLY_USER=admin
       - WILDFLY_PASSWORD=admin_pass
+      - JAVA_OPTS=-Djava.util.logging.manager=org.jboss.logmanager.LogManager -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9010 -Dcom.sun.management.jmxremote.rmi.port=9010 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=localhost
     depends_on:
       - postgres
 
@@ -20,7 +22,7 @@ services:
       POSTGRES_PASSWORD: pass
       POSTGRES_DB: postgres
     ports:
-      - "5432:5432"
+      - "15432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
 

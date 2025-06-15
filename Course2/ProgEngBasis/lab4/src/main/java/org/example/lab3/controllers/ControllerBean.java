@@ -1,13 +1,17 @@
 package org.example.lab3.controllers;
 
 import jakarta.annotation.ManagedBean;
+import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
+import org.example.lab3.mbeans.PointsCounter;
 import org.example.lab3.service.CheckHitService;
 import org.example.lab3.entity.Result;
 
+import javax.management.*;
 import java.io.Serial;
 import java.io.Serializable;
+import java.lang.management.ManagementFactory;
 import java.util.List;
 
 @Named("controllerBean")
@@ -22,6 +26,28 @@ public class ControllerBean implements Serializable {
     private float x;
     private float y;
     private float r;
+
+    private final PointsCounter pointsCounter = new PointsCounter();
+
+    @PostConstruct
+    private void registerMBeans() throws MalformedObjectNameException, NotCompliantMBeanException, InstanceAlreadyExistsException, MBeanRegistrationException {
+        MBeanServer server = ManagementFactory.getPlatformMBeanServer();
+        server.registerMBean(new PointsCounter(), new ObjectName("org.example.lab3:type=PointsCounter"));
+    }
+
+    public void completeRequest() {
+        boolean isHit = checkHitService.checkDot(x, y, r);
+        Result result = new Result(x, y, r, isHit);
+        checkHitService.saveResult(result);
+
+        pointsCounter.onPointAdded(isHit);
+    }
+
+    public void clearResults() {checkHitService.clearAllResults();}
+
+    public List<Result> getResultList() {
+        return checkHitService.findAllResults();
+    }
 
     public float getX() {
         return x;
@@ -45,18 +71,6 @@ public class ControllerBean implements Serializable {
 
     public void setR(float r) {
         this.r = r;
-    }
-
-    public void completeRequest() {
-        boolean isHit = checkHitService.checkDot(x, y, r);
-        Result result = new Result(x, y, r, isHit);
-        checkHitService.saveResult(result);
-    }
-
-    public void clearResults() {checkHitService.clearAllResults();}
-
-    public List<Result> getResultList() {
-        return checkHitService.findAllResults();
     }
 }
 

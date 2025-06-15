@@ -3,7 +3,7 @@ package org.example.lab3.controllers;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import org.example.lab3.mbeans.PointsCounter;
+import org.example.lab3.mbeans.impl.PointsCounter;
 import org.example.lab3.service.CheckHitService;
 import org.example.lab3.entity.Result;
 import java.io.Serial;

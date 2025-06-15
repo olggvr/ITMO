@@ -1,8 +1,9 @@
-package org.example.lab3.mbeans;
+package org.example.lab3.mbeans.impl;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
+import org.example.lab3.mbeans.interfaces.PointsCounterMBean;
 
 import javax.management.*;
 import java.lang.management.ManagementFactory;

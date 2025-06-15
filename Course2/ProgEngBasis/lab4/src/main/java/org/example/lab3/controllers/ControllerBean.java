@@ -1,13 +1,19 @@
 package org.example.lab3.controllers;
 
+import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import org.example.lab3.mbeans.impl.PointsCounter;
+import org.example.lab3.mbeans.AreaComputer;
+import org.example.lab3.mbeans.PointsCounter;
 import org.example.lab3.service.CheckHitService;
 import org.example.lab3.entity.Result;
+
+import javax.management.MBeanServer;
+import javax.management.ObjectName;
 import java.io.Serial;
 import java.io.Serializable;
+import java.lang.management.ManagementFactory;
 import java.util.List;
 
 @Named("controllerBean")
@@ -26,6 +32,30 @@ public class ControllerBean implements Serializable {
     private float x;
     private float y;
     private float r;
+
+    @PostConstruct
+    private void registerMBeans() {
+        try {
+            MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
+
+            ObjectName pointsCounterName = new ObjectName("org.example.lab3:type=PointsCounter");
+            ObjectName areaComputerName = new ObjectName("org.example.lab3:type=AreaComputer");
+
+            if (!mbs.isRegistered(pointsCounterName)) {
+                mbs.registerMBean(pointsCounter, pointsCounterName);
+            }
+
+            AreaComputer areaComputer = new AreaComputer();
+            if (!mbs.isRegistered(areaComputerName)) {
+                mbs.registerMBean(areaComputer, areaComputerName);
+            }
+
+            mbs.addNotificationListener(pointsCounterName, areaComputer, null, null);
+
+        } catch (Exception e) {
+            System.out.println("Error while register: " + e.getMessage());
+        }
+    }
 
     public void completeRequest() {
         boolean isHit = checkHitService.checkDot(x, y, r);

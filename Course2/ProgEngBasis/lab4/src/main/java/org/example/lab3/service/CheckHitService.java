@@ -1,7 +1,6 @@
 package org.example.lab3.service;
 
 import org.example.lab3.entity.Result;
-import org.example.lab3.repository.ResultRepository;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -12,7 +11,7 @@ public class CheckHitService implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    private final transient ResultRepository resultRepository = new ResultRepository();
+    private List<Result> results;
 
     public boolean checkDot(float x, float y, float r) {
         return (x >= 0 && x < r && y >= 0 && y < r/2) ||
@@ -21,16 +20,15 @@ public class CheckHitService implements Serializable {
     }
 
     public void saveResult(Result result) {
-        resultRepository.save(result);
+        results.add(result);
     }
 
     public List<Result> findAllResults() {
-        return resultRepository.findAll();
+        return results;
     }
 
     public void clearAllResults() {
-        ResultRepository resultRepository = new ResultRepository();
-        resultRepository.clean();
+        results.clear();
     }
 
 }

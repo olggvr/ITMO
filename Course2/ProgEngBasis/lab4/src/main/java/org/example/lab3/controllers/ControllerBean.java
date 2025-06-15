@@ -1,39 +1,31 @@
 package org.example.lab3.controllers;
 
-import jakarta.annotation.ManagedBean;
-import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import org.example.lab3.mbeans.PointsCounter;
 import org.example.lab3.service.CheckHitService;
 import org.example.lab3.entity.Result;
-
-import javax.management.*;
 import java.io.Serial;
 import java.io.Serializable;
-import java.lang.management.ManagementFactory;
 import java.util.List;
 
 @Named("controllerBean")
 @ApplicationScoped
-@ManagedBean
 public class ControllerBean implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
-    private final transient CheckHitService checkHitService = new CheckHitService();
+
+    @Inject
+    private PointsCounter pointsCounter;
+
+    @Inject
+    private transient CheckHitService checkHitService;
 
     private float x;
     private float y;
     private float r;
-
-    private final PointsCounter pointsCounter = new PointsCounter();
-
-    @PostConstruct
-    private void registerMBeans() throws MalformedObjectNameException, NotCompliantMBeanException, InstanceAlreadyExistsException, MBeanRegistrationException {
-        MBeanServer server = ManagementFactory.getPlatformMBeanServer();
-        server.registerMBean(new PointsCounter(), new ObjectName("org.example.lab3:type=PointsCounter"));
-    }
 
     public void completeRequest() {
         boolean isHit = checkHitService.checkDot(x, y, r);

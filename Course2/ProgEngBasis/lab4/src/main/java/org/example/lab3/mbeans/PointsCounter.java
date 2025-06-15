@@ -23,7 +23,7 @@ public class PointsCounter extends NotificationBroadcasterSupport implements Poi
 
             Notification notification = new Notification(
                     "lab3.totalPointsIncreased",
-                    this,
+                    "PointsCounter",
                     sequenceNumber++,
                     System.currentTimeMillis(),
                     "Total points value increased and now divides by 15"

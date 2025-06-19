@@ -1,77 +1,50 @@
-#include <iostream>
-#include <vector>
-#include <unordered_map>
+#include <bits/stdc++.h>
 using namespace std;
-
 typedef long long ll;
+const ll P1 = 1000000007LL;
+const ll P2 = 1000000009LL;
 
-int get_max(const vector<int>& arr, int l, int r) {
-    int pos = l;
-    for (int i = l + 1; i <= r; ++i)
-        if (arr[i] > arr[pos]) pos = i;
-    return pos;
-}
-
-ll merge_sum(vector<int>& sub) {
-    unordered_map<int, int> cnt;
-    for (int v : sub) cnt[v]++;
-    for (int i = 0; i < 70; ++i) {
-        if (cnt.count(i) && cnt[i] >= 2) {
-            int pairs = cnt[i] / 2;
-            cnt[i + 1] += pairs;
-            cnt[i] -= pairs * 2;
-        }
+struct hsh {
+    size_t operator()(const pair<ll,ll>& p) const {
+        return p.first ^ (p.second << 17);
     }
-    ll res = 0;
-    for (auto [val, num] : cnt) if (num) res += 1LL << val;
-    return res;
-}
+};
 
-vector<ll> all_merges(const vector<int>& arr, int l, int r) {
-    vector<ll> res;
-    vector<int> sub;
-    for (int i = l; i <= r; ++i) {
-        sub.push_back(arr[i]);
-        res.push_back(merge_sum(sub));
+void solve() {
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    for (auto &x : a) cin >> x;
+    int maxA = *max_element(a.begin(), a.end());
+    int maxPow = maxA + 21;
+    vector<ll> pow2_1(maxPow), pow2_2(maxPow);
+    pow2_1[0] = pow2_2[0] = 1;
+    for (int i = 1; i < maxPow; ++i) {
+        pow2_1[i] = (pow2_1[i-1] * 2) % P1;
+        pow2_2[i] = (pow2_2[i-1] * 2) % P2;
     }
-    return res;
-}
-
-ll solve(const vector<int>& arr, int l, int r) {
-    if (l == r) return 1;
-
-    int maxpos = get_max(arr, l, r);
+    vector<ll> prefix1(n+1), prefix2(n+1);
+    for (int i = 0; i < n; ++i) {
+        prefix1[i+1] = (prefix1[i] + pow2_1[a[i]]) % P1;
+        prefix2[i+1] = (prefix2[i] + pow2_2[a[i]]) % P2;
+    }
+    unordered_map<pair<ll,ll>, int, hsh> cnt;
+    cnt[{0,0}] = 1;
     ll ans = 0;
-
-    ll left = solve(arr, l, maxpos - 1);
-    ll right = solve(arr, maxpos + 1, r);
-    ans += left + right;
-
-    vector<ll> left_merges, right_merges;
-    if (maxpos - l < r - maxpos) {
-        left_merges = all_merges(arr, maxpos, r);
-        unordered_map<ll, int> right_map;
-        vector<ll> right_part = all_merges(arr, l, maxpos - 1);
-        for (ll v : right_part) right_map[v]++;
-        for (ll x : left_merges)
-            if (__builtin_popcountll(x) == 1) ans += right_map[x];
-    } else {
-        right_merges = all_merges(arr, l, maxpos);
-        unordered_map<ll, int> left_map;
-        vector<ll> left_part = all_merges(arr, maxpos + 1, r);
-        for (ll v : left_part) left_map[v]++;
-        for (ll x : right_merges)
-            if (__builtin_popcountll(x) == 1) ans += left_map[x];
+    for (int r = 1; r <= n; ++r) {
+        for (int k = 0; k < maxPow; ++k) {
+            ll want1 = (prefix1[r] - pow2_1[k] + P1) % P1;
+            ll want2 = (prefix2[r] - pow2_2[k] + P2) % P2;
+            auto key = make_pair(want1, want2);
+            if (cnt.count(key)) ans += cnt[key];
+        }
+        cnt[{prefix1[r], prefix2[r]}]++;
     }
-    return ans;
+    cout << ans << '\n';
 }
 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    int n;
-    cin >> n;
-    vector<int> arr(n);
-    for (int& x : arr) cin >> x;
-    cout << solve(arr, 0, n - 1) << '\n';
+    solve();
 }

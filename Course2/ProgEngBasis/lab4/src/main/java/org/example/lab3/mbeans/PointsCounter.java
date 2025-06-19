@@ -16,7 +16,7 @@ public class PointsCounter extends NotificationBroadcasterSupport implements Poi
 
     @Override
     public void onPointAdded(boolean isHit) {
-        if (isHit) totalOutsidePoints++;
+        if (!isHit) totalOutsidePoints++;
         totalPoints++;
         if (totalPoints % 15 == 0) {
             System.out.println("Points: " + totalPoints);
